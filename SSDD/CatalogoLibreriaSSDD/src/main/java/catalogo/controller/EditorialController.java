@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import catalogo.model.Editorial;
 import catalogo.repository.EditorialRepositorio;
+import catalogo.repository.LibroRepositorio;
 
 @Controller
 public class EditorialController {
 	
 	@Autowired
 	private EditorialRepositorio repEditorial;
+	private LibroRepositorio repLibro;
 	
 	@RequestMapping(value="/registroEditorialCompletado")
 	public String registraEditorial(
@@ -28,6 +30,15 @@ public class EditorialController {
 		repEditorial.save(newEditorial);
 		model.addAttribute("repEditoriales", repEditorial);
 		return "editorialRegistrada";
+	}
+	
+	@RequestMapping(value="/irAContenidoEditorial")
+	public String mostrarEditorial (@RequestParam long idEditorial, Model model) {
+		
+		Editorial editorial = repEditorial.getOne(idEditorial); //Cojo la editorial del repositorio de editoriales según su CLAVE PRIMARIA (id)
+		model.addAttribute("editorial", editorial); //Lo añado al modelo
+		
+		return "contenidoEditorial"; //Devuelvo la plantilla correspondiente con la editorial
 	}
 	
 
