@@ -1,9 +1,27 @@
+
+
+------------------------------------------------------
 JORGE
 Tarea: insertarEditorial
-Enlace controlador: /registroEditorialCompletado	"Desde el formulario de inserción a editorialRegistrada"
-Plantilla de devolución: editorialRegistrada		"volverá al catálogo"
+	Enlace controlador: /registroEditorialCompletado 
+	"Desde el formulario de insercion a editorialRegistrada"
+	Plantilla de devolucion: editorialRegistrada
+	"volverá al catalogo"
+
+Tarea: irAContenidoEditorial
+
+Tarea: busqueda de editorial segœn sus par‡metros y devolucion de la plantilla correspondiente; plantilla de error "No se encontraron resultados"
+
+------------------------------------------------------
 
 STEVEN
+Tarea: catalogo. A–adir la pagina principal (localhost:8080/catalogo.html) donde se 		muestra:
+	- los libros 
+	- las editoriales
+	- A–adir libro
+	- A–adir editorial
+	- Buscar libro
+	- Buscar editorial
 
-
+------------------------------------------------------
 MARK
