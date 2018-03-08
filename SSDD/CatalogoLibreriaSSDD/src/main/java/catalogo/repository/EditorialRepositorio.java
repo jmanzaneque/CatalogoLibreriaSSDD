@@ -1,8 +1,8 @@
-package com.example.demo.repository;
+package catalogo.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.demo.model.Editorial;
+import catalogo.model.Editorial;
 
 public interface EditorialRepositorio extends JpaRepository<Editorial, Long>{
 
