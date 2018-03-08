@@ -12,17 +12,17 @@ public class LibroController {
 
 
 	@Autowired
-	private EditorialRepositorio repositorioEditoriales;
+	private EditorialRepositorio repEditorial;
 	
 	@Autowired
-	private LibroRepositorio repositorioLibros;
+	private LibroRepositorio repLibro;
 	
 	/*controlador del catálogo que con localhost:8080 va a / que me lleva a la dinámica del catálogo*/
 	@RequestMapping("/")
 	public String tablon(Model model) {
 
-		model.addAttribute("libros", repositorioLibros.findAll());
-		model.addAttribute("editoriales",repositorioEditoriales.findAll());
+		model.addAttribute("libro", repLibro.findAll());
+		model.addAttribute("editorial",repEditorial.findAll());
 
 		return "catalogo";
 	}

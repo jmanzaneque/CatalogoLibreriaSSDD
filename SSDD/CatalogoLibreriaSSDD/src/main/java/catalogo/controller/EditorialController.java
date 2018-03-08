@@ -17,7 +17,6 @@ public class EditorialController {
 	
 	@Autowired
 	private EditorialRepositorio repEditorial;
-	private LibroRepositorio repLibro;
 	
 	@RequestMapping(value="/registroEditorialCompletado")
 	public String registraEditorial(
