@@ -1,0 +1,9 @@
+JORGE
+Tarea: insertarEditorial
+Enlace controlador: /registroEditorialCompletado	"Desde el formulario de inserción a editorialRegistrada"
+Plantilla de devolución: editorialRegistrada		"volverá al catálogo"
+
+STEVEN
+
+
+MARK
