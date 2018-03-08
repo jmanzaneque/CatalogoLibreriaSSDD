@@ -1,0 +1,15 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Contenido editorial</title>
+</head>
+<body>
+		<span th:text=" 'Nombre: ' + ${editorial.nombre}"></span><br/>
+		<span th:text=" 'NIF: ' + ${editorial.nif}"></span><br/>
+		<span th:text=" 'Telefono: ' + ${editorial.telefono}"></span><br/>
+		<span th:text=" 'E-mail: ' + ${editorial.email}"></span><br/>
+		<span th:text=" 'Código postal: ' + ${editorial.cPostal}"></span><br/>
+		
+		<a href="/">Volver al catálogo</a>					<!-- El enlace es al controlador, que es quien irá al catálogo -->
+</body>
+</html>
