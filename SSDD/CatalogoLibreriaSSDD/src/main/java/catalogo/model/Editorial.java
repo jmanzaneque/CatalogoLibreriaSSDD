@@ -45,12 +45,12 @@ public class Editorial {
 	public void setLibros(List<Libro> libros) {
 		this.libros = libros;
 	}
-	//añadir libro a la editorial
+	//añadir libro a la editorial parametro Libro
 	public void addLibros(Libro libro) {
 		this.libros.add(libro);
 	}
 	
-	//eliminar libro de la editorial
+	//eliminar libro de la editorial, dando titulo de libro directamente(provisional)
 	public void quitLibro(String tituloLibro) {
 		Iterator<Libro> it = this.libros.iterator();
 		boolean encontrado = false;
@@ -62,8 +62,8 @@ public class Editorial {
 			}
 		}
 		if(!encontrado) {
-			//Devolver correspondiente, provisional
-			System.out.println("El libro "+libro.getTitulo()+" no esta en esta editorial.");;
+			//Devolver correspondiente (provisional)
+			System.out.println("El libro "+tituloLibro+" no esta en esta editorial.");
 		}
 	}
 
