@@ -26,8 +26,11 @@ public class LibroController {
 
 		return "catalogo";
 	}
+	
 	@RequestMapping("/nuevoLibro")
-		public String insertar(Model model)
+		public void insertar(Model model) {
+		
+	}
 	
 	
 	

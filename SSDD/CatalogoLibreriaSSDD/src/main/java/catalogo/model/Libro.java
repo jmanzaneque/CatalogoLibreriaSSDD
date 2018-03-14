@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Libro {
@@ -16,6 +18,9 @@ public class Libro {
 	private int nPaginas;
 	private float pvp;
 	private int anyoPublicacion;
+	
+	@ManyToOne
+	@JoinColumn(name= "idEditorial")
 	private Editorial editorial;
 	
 	public Libro (String autores, String titulo, String categoria, int nPaginas, float pvp, int anyoPublicacion, Editorial editorial) {

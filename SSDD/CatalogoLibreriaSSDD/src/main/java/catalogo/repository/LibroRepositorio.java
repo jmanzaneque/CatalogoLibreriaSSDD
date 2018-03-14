@@ -8,7 +8,7 @@ import catalogo.model.Libro;
 
 public interface LibroRepositorio extends JpaRepository<Libro, Long> {
 
-	Libro findById(String id);
+	Libro findById(long id);
 	
 	List<Libro> findAllByOrderById();
 }

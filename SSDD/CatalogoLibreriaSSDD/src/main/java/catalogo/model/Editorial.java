@@ -7,9 +7,10 @@ import javax.persistence.Id;
 
 @Entity
 public class Editorial {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
+	private long idEditorial;
 	
 	private String nombre, email;
 	private long telefono, cPostal, nif;
@@ -22,12 +23,12 @@ public class Editorial {
 		this.nif = nif;
 	}
 	
-	public long getId() {
-		return id;
+	public long getIdEditorial() {
+		return idEditorial;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setIdEditorial(long idEditorial) {
+		this.idEditorial = idEditorial;
 	}
 
 	public long getNif() {
