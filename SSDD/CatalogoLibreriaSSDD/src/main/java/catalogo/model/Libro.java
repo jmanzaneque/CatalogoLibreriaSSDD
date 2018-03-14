@@ -23,6 +23,10 @@ public class Libro {
 	@JoinColumn(name= "idEditorial")
 	private Editorial editorial;
 	
+	public Libro() {
+		
+	}
+	
 	public Libro (String autores, String titulo, String categoria, int nPaginas, float pvp, int anyoPublicacion, Editorial editorial) {
 		this.autores = autores;
 		this.titulo = titulo;

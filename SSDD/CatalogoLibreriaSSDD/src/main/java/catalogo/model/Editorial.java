@@ -1,9 +1,13 @@
 package catalogo.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Editorial {
@@ -15,6 +19,9 @@ public class Editorial {
 	private String nombre, email;
 	private long telefono, cPostal, nif;
 	
+	@OneToMany(mappedBy = "editorial")
+	private List<Libro> libros;
+	
 	public Editorial() {
 		
 	}
@@ -25,8 +32,17 @@ public class Editorial {
 		this.email = email;
 		this.cPostal = cPostal;
 		this.nif = nif;
+		this.libros = new ArrayList<Libro>();
 	}
 	
+	public List<Libro> getLibros() {
+		return libros;
+	}
+
+	public void setLibros(List<Libro> libros) {
+		this.libros = libros;
+	}
+
 	public long getIdEditorial() {
 		return idEditorial;
 	}

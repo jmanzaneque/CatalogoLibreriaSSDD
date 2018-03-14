@@ -8,5 +8,15 @@ import catalogo.model.Editorial;
 
 
 public interface EditorialRepositorio extends JpaRepository<Editorial, Long>{
-	List<Editorial> findByNombre(String nombre);
+	Editorial findByNombre(String nombre);
+	List<Editorial> findAllByOrderByNombreAsc();
+	Editorial findByEmail(String email);
+	List<Editorial> findAllByOrderByEmailAsc();
+	Editorial findByTelefono(long telefono);
+	List<Editorial> findAllByOrderByTelefonoAsc();
+	Editorial findByCPostal(long cPostal);
+	List<Editorial> findAllByOrderByCPostalAsc();
+	Editorial findByNif(long nif);
+	List<Editorial> findAllByOrderByNifAsc();
+	
 }
