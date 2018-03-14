@@ -15,6 +15,10 @@ public class Editorial {
 	private String nombre, email;
 	private long telefono, cPostal, nif;
 	
+	public Editorial() {
+		
+	}
+	
 	public Editorial (String nombre, long telefono, String email, long cPostal, long nif) {
 		this.nombre = nombre;
 		this.telefono = telefono;

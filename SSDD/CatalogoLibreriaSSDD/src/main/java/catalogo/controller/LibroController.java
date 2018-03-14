@@ -23,7 +23,7 @@ public class LibroController {
 	public String tablon(Model model) {
 
 		//model.addAttribute("libro", repLibro.findAll());
-		//model.addAttribute("editorial",repEditorial.findAll());
+		model.addAttribute("totalEditoriales",repEditorial.findAll());
 
 		return "catalogo";
 	}

@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import catalogo.model.Editorial;
 
-public interface EditorialRepositorio extends JpaRepository<Editorial, Long>{
 
+public interface EditorialRepositorio extends JpaRepository<Editorial, Long>{
+	List<Editorial> findByNombre(String nombre);
 }
