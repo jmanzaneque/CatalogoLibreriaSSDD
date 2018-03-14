@@ -24,6 +24,7 @@
 	<h2>Editoriales</h2>
 	<p th:each="editorial : ${totalEditoriales}">
 	<a th:text="${editorial.nombre}"></a> 
+	<a th:href="@{/irAContenidoEditorial(idEditorial=${editorial.idEditorial})}"> Ver</a>
 	</p>
 </body>
 </html>

@@ -6,7 +6,8 @@
 <body>
 	<h1>Resultados de la búsqueda</h1>
 	<p th:each="editorial : ${resultadoConsulta}">
-	<a th:text="${editorial.nombre}"></a> 
+	<a th:text="${editorial.nombre}"></a>
+	<a th:href="@{/irAContenidoEditorial(idEditorial=${editorial.idEditorial})}"> Ver</a>
 	</p>
 	
 	
