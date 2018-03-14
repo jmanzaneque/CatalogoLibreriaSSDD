@@ -2,12 +2,14 @@ package catalogo.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Iterator;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
 
 @Entity
 public class Editorial {
@@ -21,6 +23,7 @@ public class Editorial {
 	
 	@OneToMany(mappedBy = "editorial")
 	private List<Libro> libros;
+	
 	
 	public Editorial() {
 		
@@ -41,6 +44,27 @@ public class Editorial {
 
 	public void setLibros(List<Libro> libros) {
 		this.libros = libros;
+	}
+	//añadir libro a la editorial
+	public void addLibros(Libro libro) {
+		this.libros.add(libro);
+	}
+	
+	//eliminar libro de la editorial
+	public void quitLibro(String tituloLibro) {
+		Iterator<Libro> it = this.libros.iterator();
+		boolean encontrado = false;
+		while(it.hasNext()||!encontrado) {
+			Libro l = it.next();
+			if (tituloLibro.equalsIgnoreCase(l.getTitulo())) {
+				encontrado=true;
+				it.remove();
+			}
+		}
+		if(!encontrado) {
+			//Devolver correspondiente, provisional
+			System.out.println("El libro "+libro.getTitulo()+" no esta en esta editorial.");;
+		}
 	}
 
 	public long getIdEditorial() {
