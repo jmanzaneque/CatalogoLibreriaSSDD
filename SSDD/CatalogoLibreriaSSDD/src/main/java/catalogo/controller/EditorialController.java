@@ -1,5 +1,7 @@
 package catalogo.controller;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +45,37 @@ public class EditorialController {
 		model.addAttribute("editorial", editorial); //Lo añado al modelo
 		
 		return "contenidoEditorial"; //Devuelvo la plantilla correspondiente con la editorial
+	}
+	
+	@RequestMapping(value="/consultaEditorial")
+	public String consultaEditorial (@RequestParam String criterio, 
+									@RequestParam String filtro, 
+									Model model) {
+		
+		List<Editorial> resConsulta = null;
+		
+		switch(criterio) {
+			case "nombre": 
+				resConsulta = repEditorial.findByNombre(filtro);
+				break;
+			case "email": 
+				resConsulta = repEditorial.findByEmail(filtro);
+				break;
+			case "telefono": 
+				resConsulta = repEditorial.findByTelefono(Long.parseLong(filtro));
+				break;
+			case "cPostal": 
+				resConsulta = repEditorial.findByCPostal(Long.parseLong(filtro));
+				break;
+			case "nif": 
+				resConsulta = repEditorial.findByNif(Long.parseLong(filtro));
+				break;
+		}
+		
+		model.addAttribute("resultadoConsulta", resConsulta);
+		
+		return "catalogoEditoriales";
+		
 	}
 	
 	@PostConstruct

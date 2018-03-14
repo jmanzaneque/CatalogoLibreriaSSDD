@@ -1,0 +1,15 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1"/>
+	<title>Resultado de la búsqueda</title>
+</head>
+<body>
+	<h1>Resultados de la búsqueda</h1>
+	<p th:each="editorial : ${resultadoConsulta}">
+	<a th:text="${editorial.nombre}"></a> 
+	</p>
+	
+	
+	<a href="/">Volver al catálogo</a>
+</body>
+</html>

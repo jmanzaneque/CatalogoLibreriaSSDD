@@ -1,8 +1,27 @@
 <html xmlns:th="http://www.thymeleaf.org">
+
 <body>
-	<h1>Cátalogo de libros v.1</h1>
+	<h1>Catalogo de libros v.1</h1>
+	
+	<!-- Registro de nueva editorial -->
 	<a href="/registrarEditorial.html">Registrar nueva editorial</a>
 	
+	<!-- Consulta de editoriales -->
+	<p>Consulta de editoriales</p>
+	<form method="post" action="/consultaEditorial">
+		<select name="criterio" >
+			<option value="nombre">Nombre</option>
+			<option value="email">E-mail</option>
+			<option value="telefono">Telefono</option>
+			<option value="cPostal">Cod. Postal</option>
+			<option value="nif">NIF</option>
+		</select>
+		<input type="text" name="filtro" />
+		<input type="submit" value="Enviar"/>
+	</form>
+	
+	<!-- Listado de editoriales -->
+	<h2>Editoriales</h2>
 	<p th:each="editorial : ${totalEditoriales}">
 	<a th:text="${editorial.nombre}"></a> 
 	</p>
