@@ -4,17 +4,20 @@
 <title>Modificar editorial</title>
 </head>
 <body>
+<h1> Modificar editorial</h1>
+<form method="post" action="/modificarEditorialCompletado(editorial=editorial})">
 	<p>Nombre:</p>
-	<input type="text" name="nombre" value=${editorial.getNombre() }/>
+	<input type="text" name="nombre" value=${editorial.nombre} /><br/>
 	<p>Teléfono:</p>
-	<input type="tel" name="telefono" value=${editorial.getTelefono()/>
+	<input type="tel" name="telefono" value=${editorial.telefono} /><br/>
 	<p>e-mail:</p>
-	<input type="email" name="email" value=${editorial.getEmail()/>
+	<input type="email" name="email" value=${editorial.email} /><br/>
 	<p>Código postal:</p>
-	<input type="number" name="cPostal" value=${editorial.getCodPostal()/>
+	<input type="number" name="cPostal" value=${editorial.cPostal()} /><br/>
 	<p>NIF</p>
-	<input type="number" name="cPostal" value=${editorial.getNif()/>
-		<a href="/">Volver al catálogo</a>					<!-- El enlace es al controlador, que es quien irá al catálogo -->
+	<input type="number" name="cPostal" value=${editorial.nif()} /><br/>
+	<input type="submit" value="Enviar">
+</form>
 </body>
 </html>
 

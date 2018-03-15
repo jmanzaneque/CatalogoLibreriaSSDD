@@ -77,33 +77,74 @@ public class EditorialController {
 				model.addAttribute("resultadoConsulta", resEditorial);
 				break;
 		}
+		
+		model.addAttribute("titulo", "Resultados de la búsqueda");
 			
 		return "catalogoEditoriales";
 		
 	}
 	
-	
-	public void modificarEditorial(long idEditorial,@RequestParam String campo, String mod) {
-		Editorial editorial = repEditorial.getOne(idEditorial);
-		switch(campo) {
-			case "nombre": 
-				editorial.setNombre(mod);
-				break;
-			case "email": 
-				editorial.setEmail(mod);;
-				break;
-			case "telefono": 
-				editorial.setTelefono(Long.parseLong(mod));;
-				break;
-			case "cPostal": 
-				editorial.setcPostal(Long.parseLong(mod));;
-				break;
-			case "nif": 
-				editorial.setNif(Long.parseLong(mod));;
-				break;
-		}
-		repEditorial.save(editorial);
+
+	@RequestMapping(value="/irAModificarEditorial")
+	public String moEditorial (@RequestParam long idEditorial, Model model) {
+		
+		Editorial editorial = repEditorial.getOne(idEditorial); //Cojo la editorial del repositorio de editoriales según su CLAVE PRIMARIA (id)
+		model.addAttribute("editorial", editorial); //Lo añado al modelo
+		
+		return "modificarEditorial"; //Devuelvo la plantilla correspondiente con la editorial
 	}
+
+	@RequestMapping(value="/modificarEditorialCompletado")
+	public String modificarEditorial(Editorial editorial,String campo, 
+		@RequestParam(value="nombre") String nombre,
+		@RequestParam(value="telefono") long telefono,
+		@RequestParam(value="email") String email,
+		@RequestParam(value="cPostal") long cPostal,
+		@RequestParam(value="nif") long nif) {
+		
+		editorial.setNombre(nombre);
+		editorial.setTelefono(telefono);
+		editorial.setEmail(email);
+		editorial.setcPostal(cPostal);
+		editorial.setNif(nif);
+		return "editorialModificada";
+		
+	}
+	@RequestMapping(value="/ordenarEditoriales")
+	public String ordenaEditoriales(@RequestParam String criterio, Model model) {
+		List<Editorial> resOrden = null;
+		String criterioMostrar = null;
+		switch(criterio) {
+		case "nombre":
+			resOrden = repEditorial.findAllByOrderByNombreAsc();
+			criterioMostrar = criterio;
+			break;
+		case "email":
+			resOrden = repEditorial.findAllByOrderByEmailAsc();
+			criterioMostrar = "e-mail";
+			break;
+		case "telefono":
+			resOrden = repEditorial.findAllByOrderByTelefonoAsc();
+			criterioMostrar = "teléfono";
+			break;
+		case "cPostal":
+			resOrden = repEditorial.findAllByOrderByCPostalAsc();
+			criterioMostrar = "Código Postal";
+			break;
+		case "nif":
+			resOrden = repEditorial.findAllByOrderByNifAsc();
+			criterioMostrar = "NIF";
+			break;
+		}
+		
+		model.addAttribute("resultadoConsulta", resOrden);
+		model.addAttribute("titulo", "Editoriales ordenadas por " + criterioMostrar);
+		
+		return "catalogoEditoriales";
+	}
+	
+	
+	
 	
 	
 	@RequestMapping(value="/añadirLibroEditorial")
