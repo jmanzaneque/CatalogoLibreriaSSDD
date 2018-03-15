@@ -5,7 +5,7 @@
 	
 	<!-- Registro de nueva editorial -->
 	<a href="/registrarEditorial.html">Registrar nueva editorial</a>
-	
+	<br/>
 	<!-- Registro de nuevo Libro -->
 	<a href="/RegistrarLibro.html">Registrar nuevo libro</a>
 
@@ -21,6 +21,19 @@
 		</select>
 		<input type="text" name="filtro" />
 		<input type="submit" value="Enviar"/>
+	</form>
+	
+	<!-- Ordenar editoriales -->
+	<p>Ordenar editoriales por:</p>
+	<form method="post" action="/ordenarEditoriales">
+		<select name="criterio">
+			<option value="nombre">Nombre</option>
+			<option value="email">E-mail</option>
+			<option value="telefono">Telefono</option>
+			<option value="cPostal">Cod. Postal</option>
+			<option value="nif">NIF</option>
+		</select>
+		<input type="submit" value="Ordenar"/>
 	</form>
 	
 	<!-- Listado de editoriales -->

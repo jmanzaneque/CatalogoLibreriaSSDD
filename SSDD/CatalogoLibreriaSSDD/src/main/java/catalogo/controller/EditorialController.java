@@ -77,9 +77,44 @@ public class EditorialController {
 				model.addAttribute("resultadoConsulta", resEditorial);
 				break;
 		}
+		
+		model.addAttribute("titulo", "Resultados de la búsqueda");
 			
 		return "catalogoEditoriales";
 		
+	}
+	
+	@RequestMapping(value="/ordenarEditoriales")
+	public String ordenaEditoriales(@RequestParam String criterio, Model model) {
+		List<Editorial> resOrden = null;
+		String criterioMostrar = null;
+		switch(criterio) {
+		case "nombre":
+			resOrden = repEditorial.findAllByOrderByNombreAsc();
+			criterioMostrar = criterio;
+			break;
+		case "email":
+			resOrden = repEditorial.findAllByOrderByEmailAsc();
+			criterioMostrar = "e-mail";
+			break;
+		case "telefono":
+			resOrden = repEditorial.findAllByOrderByTelefonoAsc();
+			criterioMostrar = "teléfono";
+			break;
+		case "cPostal":
+			resOrden = repEditorial.findAllByOrderByCPostalAsc();
+			criterioMostrar = "Código Postal";
+			break;
+		case "nif":
+			resOrden = repEditorial.findAllByOrderByNifAsc();
+			criterioMostrar = "NIF";
+			break;
+		}
+		
+		model.addAttribute("resultadoConsulta", resOrden);
+		model.addAttribute("titulo", "Editoriales ordenadas por " + criterioMostrar);
+		
+		return "catalogoEditoriales";
 	}
 	
 	
