@@ -1,6 +1,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <title>Modificar editorial</title>
 </head>
 <body>
@@ -8,11 +8,11 @@
 <form method="post" action="/modificarEditorialCompletado(editorial=editorial})">
 	<p>Nombre:</p>
 	<input type="text" name="nombre" value=${editorial.nombre} /><br/>
-	<p>Teléfono:</p>
+	<p>TelÃ©fono:</p>
 	<input type="tel" name="telefono" value=${editorial.telefono} /><br/>
 	<p>e-mail:</p>
 	<input type="email" name="email" value=${editorial.email} /><br/>
-	<p>Código postal:</p>
+	<p>CÃ³digo postal:</p>
 	<input type="number" name="cPostal" value=${editorial.cPostal()} /><br/>
 	<p>NIF</p>
 	<input type="number" name="cPostal" value=${editorial.nif()} /><br/>

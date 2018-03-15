@@ -1,13 +1,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
-
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <body>
-	<h1>Catalogo de libros v.1</h1>
+	<h1>Catálogo de libros v.1</h1>
 	
 	<!-- Registro de nueva editorial -->
 	<a href="/registrarEditorial.html">Registrar nueva editorial</a>
 	<br/>
 	<!-- Registro de nuevo Libro -->
-	<a href="/RegistrarLibro.html">Registrar nuevo libro</a>
+	<a href="/nuevoLibro">Registrar nuevo libro</a>
 
 	<!-- Consulta de editoriales -->
 	<p>Consulta de editoriales</p>
@@ -43,5 +43,17 @@
 	<a th:href="@{/irAContenidoEditorial(idEditorial=${editorial.idEditorial})}"> Ver</a>
 	<a th:href="@{/irAModificarEditorial(idEditorial=${editorial.idEditorial})}"> Modificar</a>
 	</p>
+	
+	<!-- Listado de libros -->
+	<h2>Libros</h2>
+	<p th:each="libro : ${totalLibros}">
+	<a th:text="${libro.titulo}"></a> 
+	<a th:href="@{/irAContenidoLibro(id=${libro.id})}"> Ver</a>
+	</p>
+	
+	
+	
+	
+	
 </body>
 </html>

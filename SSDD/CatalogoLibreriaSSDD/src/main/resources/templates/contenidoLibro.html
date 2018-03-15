@@ -1,0 +1,16 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Contenido editorial</title>
+</head>
+<body>
+		<span th:text=" 'Título: ' + ${libro.titulo}"></span><br/>
+		<span th:text=" 'Autores: ' + ${libro.autores}"></span><br/>
+		<span th:text=" 'Categoria: ' + ${libro.categoria}"></span><br/>
+		<span th:text=" 'Número de Páginas: ' + ${libro.nPaginas}"></span><br/>
+		<span th:text=" 'Precio: ' + ${libro.pvp}"></span><br/>
+		<span th:text=" 'Año de Publicación: ' + ${libro.anyoPublicacion}"></span><br/>
+		<span th:text=" 'Editorial: ' + ${libro.editorial}"></span><br/>
+		<a href="/">Volver al catálogo</a>					<!-- El enlace es al controlador, que es quien irá al catálogo -->
+</body>
+</html>

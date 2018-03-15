@@ -20,8 +20,6 @@ public class EditorialController {
 	@Autowired
 	private EditorialRepositorio repEditorial;
 	
-	@Autowired
-	private LibroRepositorio repLibro;
 	
 	@RequestMapping(value="/registroEditorialCompletado")
 	public String registraEditorial(
