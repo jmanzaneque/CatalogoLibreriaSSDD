@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Registro Libro</title>
+</head>
+<body>
+<h1> Registrar nuevo libro</h1>
+<form method="post" action="/registroLibroCompletado">
+	<p>
+		Editorial: 
+		<select name="editorial"> 
+			<option th:if="editorial.idEditorial != null" th:each="editoriales : ${editorial}"
+					th:value="${editorial.nombre}" th:text="${editorial.nombre}">
+			</option>
+		</select> 
+		<a href="/registrarEditorial">Registrar nueva editorial</a>
+	</p>
+	<p>Autores:</p>
+	<input type="text" name="autores"/>
+	<p>Título:</p>
+	<input type="text" name="titulo"/>
+	<p>Categoría:</p>
+	<input type="text" name="categoria"/>
+	<p>Número de Páginas:</p>
+	<input type="number" name="nPaginas"/>
+	<p>Precio</p>
+	<input type="number" name="pvp"/>
+	<p>Año de Publicación</p>
+	<input type="number" name="anyoPublicacion"/>
+	<input type="submit" value="Enviar">
+</form>
+</body>
+</html>
