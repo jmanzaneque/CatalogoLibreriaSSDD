@@ -7,6 +7,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+
+
 @Entity
 public class Libro {
 	
@@ -18,7 +22,6 @@ public class Libro {
 	private int nPaginas;
 	private float pvp;
 	private int anyoPublicacion;
-	
 	@ManyToOne
 	@JoinColumn(name= "idEditorial")
 	private Editorial editorial;

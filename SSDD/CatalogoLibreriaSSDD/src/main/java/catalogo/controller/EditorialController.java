@@ -53,10 +53,11 @@ public class EditorialController {
 									Model model) {
 		
 		List<Editorial> resConsulta = null;
+		Editorial resEditorial = null;
 		
 		switch(criterio) {
 			case "nombre": 
-				resConsulta = repEditorial.findByNombre(filtro);
+				resEditorial = repEditorial.findByNombre(filtro);
 				break;
 			case "email": 
 				resConsulta = repEditorial.findByEmail(filtro);
