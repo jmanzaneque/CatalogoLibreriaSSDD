@@ -110,6 +110,7 @@ public class EditorialController {
 		return "editorialModificada";
 		
 	}
+
 	@RequestMapping(value="/ordenarEditoriales")
 	public String ordenaEditoriales(@RequestParam String criterio, Model model) {
 		List<Editorial> resOrden = null;
@@ -135,6 +136,7 @@ public class EditorialController {
 			resOrden = repEditorial.findAllByOrderByNifAsc();
 			criterioMostrar = "NIF";
 			break;
+
 		}
 		
 		model.addAttribute("resultadoConsulta", resOrden);
@@ -142,9 +144,6 @@ public class EditorialController {
 		
 		return "catalogoEditoriales";
 	}
-	
-	
-	
 	
 	
 	@RequestMapping(value="/añadirLibroEditorial")
