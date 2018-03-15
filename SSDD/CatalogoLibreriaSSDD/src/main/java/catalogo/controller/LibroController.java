@@ -30,9 +30,9 @@ public class LibroController {
 
 		return "catalogo";
 	}
-	
 	@RequestMapping(value="/registroLibroCompletado")
 	public String registroLibro(
+<<<<<<< HEAD
 		@RequestParam(value="autores") String autores,
 		@RequestParam(value="titulo") String titulo,
 		@RequestParam(value="categoria") String categoria,
@@ -48,5 +48,20 @@ public class LibroController {
 		return "libroRegistrado";
 		
 		
+=======
+			@RequestParam(value="autores") String autores,
+			@RequestParam(value="titulo") String titulo,
+			@RequestParam(value="categoria") String categoria,
+			@RequestParam(value="nPaginas") int nPaginas,
+			@RequestParam(value="pvp") float pvp,
+			@RequestParam(value="anyoPublicacion") int anyoPublicacion,
+			@RequestParam(value="editorial") Editorial editorial,
+			Model model) {
+			Libro newLibro = new Libro(autores, titulo, categoria, nPaginas, pvp, anyoPublicacion, editorial);
+			repLibro.save(newLibro);
+			model.addAttribute("repLibros", repLibro);
+		return "LibroRegistrado";
+>>>>>>> 685a529099784ba18007f16a8c00876d17436cb0
 	}
+	
 }
