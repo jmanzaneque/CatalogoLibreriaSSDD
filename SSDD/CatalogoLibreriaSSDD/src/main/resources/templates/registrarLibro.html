@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1"/>
 <title>Registro Libro</title>
@@ -10,7 +9,7 @@
 	<p>
 		Editorial: 
 		<select name="nombre"> 
-			<option th:if="editorial.id != null" th:each="editoriales : ${totalEditoriales}"
+			<option th:each="editorial : ${totalEditoriales}"
 					th:value="${editorial.nombre}" th:text="${editorial.nombre}">
 			</option>
 		</select> 

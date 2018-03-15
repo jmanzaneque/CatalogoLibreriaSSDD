@@ -19,6 +19,4 @@ public interface EditorialRepositorio extends JpaRepository<Editorial, Long>{
 	List<Editorial> findAllByOrderByCPostalAsc();
 	List<Editorial> findByNif(long nif);
 	List<Editorial> findAllByOrderByNifAsc();
-	
-	
 }
