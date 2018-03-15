@@ -1,0 +1,21 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Modificar editorial</title>
+</head>
+<body>
+	<p>Nombre:</p>
+	<input type="text" name="nombre" value=${editorial.getNombre() }/>
+	<p>Teléfono:</p>
+	<input type="tel" name="telefono" value=${editorial.getTelefono()/>
+	<p>e-mail:</p>
+	<input type="email" name="email" value=${editorial.getEmail()/>
+	<p>Código postal:</p>
+	<input type="number" name="cPostal" value=${editorial.getCodPostal()/>
+	<p>NIF</p>
+	<input type="number" name="cPostal" value=${editorial.getNif()/>
+		<a href="/">Volver al catálogo</a>					<!-- El enlace es al controlador, que es quien irá al catálogo -->
+</body>
+</html>
+
+

@@ -78,6 +78,36 @@ public class EditorialController {
 		
 	}
 	
+	
+	public void modificarEditorial(long idEditorial,@RequestParam String campo, String mod) {
+		Editorial editorial = repEditorial.getOne(idEditorial);
+		switch(campo) {
+			case "nombre": 
+				editorial.setNombre(mod);
+				break;
+			case "email": 
+				editorial.setEmail(mod);;
+				break;
+			case "telefono": 
+				editorial.setTelefono(Long.parseLong(mod));;
+				break;
+			case "cPostal": 
+				editorial.setcPostal(Long.parseLong(mod));;
+				break;
+			case "nif": 
+				editorial.setNif(Long.parseLong(mod));;
+				break;
+		}
+		repEditorial.save(editorial);
+	}
+	
+	
+	@RequestMapping(value="/añadirLibroEditorial")
+	public void añadirLibroEditorial(Editorial editorial,@RequestParam String campo, String mod) {
+		
+	}
+	
+	
 	@PostConstruct
 	public void init() {
 		repEditorial.save(new Editorial("Anaya",628015678,"anaya@anaya.es",45200,527897865));

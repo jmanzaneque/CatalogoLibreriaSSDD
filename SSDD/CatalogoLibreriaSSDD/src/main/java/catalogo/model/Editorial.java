@@ -45,27 +45,6 @@ public class Editorial {
 	public void setLibros(List<Libro> libros) {
 		this.libros = libros;
 	}
-	//añadir libro a la editorial parametro Libro
-	public void addLibros(Libro libro) {
-		this.libros.add(libro);
-	}
-	
-	//eliminar libro de la editorial, dando titulo de libro directamente(provisional)
-	public void quitLibro(String tituloLibro) {
-		Iterator<Libro> it = this.libros.iterator();
-		boolean encontrado = false;
-		while(it.hasNext()||!encontrado) {
-			Libro l = it.next();
-			if (tituloLibro.equalsIgnoreCase(l.getTitulo())) {
-				encontrado=true;
-				it.remove();
-			}
-		}
-		if(!encontrado) {
-			//Devolver correspondiente (provisional)
-			System.out.println("El libro "+tituloLibro+" no esta en esta editorial.");
-		}
-	}
 
 	public long getIdEditorial() {
 		return idEditorial;
