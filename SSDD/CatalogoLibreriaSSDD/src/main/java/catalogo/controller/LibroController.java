@@ -32,17 +32,19 @@ public class LibroController {
 	}
 	
 	@RequestMapping(value="/registroLibroCompletado")
-	public void registroLibro(
+	public String registroLibro(
 		@RequestParam(value="autores") String autores,
 		@RequestParam(value="titulo") String titulo,
 		@RequestParam(value="categoria") String categoria,
 		@RequestParam(value="nPaginas") int nPaginas,
 		@RequestParam(value="pvp") float pvp,
 		@RequestParam(value="anyoPublicacion") int anyoPublicacion,
+		@RequestParam String nombre,
 		Model model) {
+		Editorial editorial = repEditorial.findByNombre(nombre);
 		Libro newLibro = new Libro(autores, titulo, categoria, nPaginas, pvp, anyoPublicacion, editorial);
 		repLibro.save(newLibro);
-		model.addAttribute("repLibros", repLibro);
+		model.addAttribute("totalEditoriales",repEditorial.findAll());
 		return "libroRegistrado";
 		
 		

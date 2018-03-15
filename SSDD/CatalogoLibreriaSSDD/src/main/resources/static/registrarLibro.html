@@ -9,8 +9,8 @@
 <form method="post" action="/registroLibroCompletado">
 	<p>
 		Editorial: 
-		<select name="editorial"> 
-			<option th:if="editorial.idEditorial != null" th:each="editoriales : ${editorial}"
+		<select name="nombre"> 
+			<option th:if="editorial.id != null" th:each="editoriales : ${totalEditoriales}"
 					th:value="${editorial.nombre}" th:text="${editorial.nombre}">
 			</option>
 		</select> 

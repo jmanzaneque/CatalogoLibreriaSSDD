@@ -5,10 +5,11 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import catalogo.model.Editorial;
+import catalogo.model.Libro;
 
 
 public interface EditorialRepositorio extends JpaRepository<Editorial, Long>{
-	List<Editorial> findByNombre(String nombre);
+	Editorial findByNombre(String nombre);
 	List<Editorial> findAllByOrderByNombreAsc();
 	List<Editorial> findByEmail(String email);
 	List<Editorial> findAllByOrderByEmailAsc();
@@ -18,5 +19,6 @@ public interface EditorialRepositorio extends JpaRepository<Editorial, Long>{
 	List<Editorial> findAllByOrderByCPostalAsc();
 	List<Editorial> findByNif(long nif);
 	List<Editorial> findAllByOrderByNifAsc();
+	
 	
 }
