@@ -30,7 +30,6 @@ public class LibroController {
 
 		return "catalogo";
 	}
-	@RequestMapping(value="/nuevoLibro")
 	@RequestMapping(value="/registroLibroCompletado")
 	public String registroLibro(
 			@RequestParam(value="autores") String autores,
