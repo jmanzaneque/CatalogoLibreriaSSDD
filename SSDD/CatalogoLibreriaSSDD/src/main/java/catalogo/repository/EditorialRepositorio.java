@@ -11,12 +11,12 @@ import catalogo.model.Libro;
 public interface EditorialRepositorio extends JpaRepository<Editorial, Long>{
 	Editorial findByNombre(String nombre);
 	List<Editorial> findAllByOrderByNombreAsc();
-	List<Editorial> findByEmail(String email);
+	Editorial findByEmail(String email);
 	List<Editorial> findAllByOrderByEmailAsc();
-	List<Editorial> findByTelefono(long telefono);
+	Editorial findByTelefono(long telefono);
 	List<Editorial> findAllByOrderByTelefonoAsc();
 	List<Editorial> findByCPostal(long cPostal);
 	List<Editorial> findAllByOrderByCPostalAsc();
-	List<Editorial> findByNif(long nif);
+	Editorial findByNif(long nif);
 	List<Editorial> findAllByOrderByNifAsc();
 }

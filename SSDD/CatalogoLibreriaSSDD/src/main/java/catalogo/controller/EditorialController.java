@@ -58,23 +58,26 @@ public class EditorialController {
 		switch(criterio) {
 			case "nombre": 
 				resEditorial = repEditorial.findByNombre(filtro);
+				model.addAttribute("resultadoConsulta", resEditorial);
 				break;
 			case "email": 
-				resConsulta = repEditorial.findByEmail(filtro);
+				resEditorial = repEditorial.findByEmail(filtro);
+				model.addAttribute("resultadoConsulta", resEditorial);
 				break;
 			case "telefono": 
-				resConsulta = repEditorial.findByTelefono(Long.parseLong(filtro));
+				resEditorial = repEditorial.findByTelefono(Long.parseLong(filtro));
+				model.addAttribute("resultadoConsulta", resEditorial);
 				break;
 			case "cPostal": 
 				resConsulta = repEditorial.findByCPostal(Long.parseLong(filtro));
+				model.addAttribute("resultadoConsulta", resConsulta);
 				break;
 			case "nif": 
-				resConsulta = repEditorial.findByNif(Long.parseLong(filtro));
+				resEditorial = repEditorial.findByNif(Long.parseLong(filtro));
+				model.addAttribute("resultadoConsulta", resEditorial);
 				break;
 		}
-		
-		model.addAttribute("resultadoConsulta", resConsulta);
-		
+			
 		return "catalogoEditoriales";
 		
 	}
