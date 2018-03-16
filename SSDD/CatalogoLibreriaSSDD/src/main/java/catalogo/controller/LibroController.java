@@ -41,6 +41,47 @@ public class LibroController {
 		return("registrarLibro");
 	}
 	
+	@RequestMapping(value="/consultaLibro")
+	public String consultaEditorial (@RequestParam String criterio, 
+									@RequestParam String filtro, 
+									Model model) {
+		
+		List<Libro> resConsulta = null;
+		Libro resLibro = null;
+		
+		switch(criterio) {
+			case "autores": 
+				resConsulta = repLibro.findByAutores(filtro);
+				model.addAttribute("resultadoConsulta", resConsulta);
+				break;
+			case "titulo": 
+				resLibro = repLibro.findByTitulo(filtro);
+				model.addAttribute("resultadoConsulta", resLibro);
+				break;
+			case "categoria": 
+				resConsulta = repLibro.findByCategoria(filtro);
+				model.addAttribute("resultadoConsulta", resConsulta);
+				break;
+			case "nPaginas": 
+				resConsulta = repLibro.findByNPaginas(Integer.parseInt(filtro));
+				model.addAttribute("resultadoConsulta", resConsulta);
+				break;
+			case "pvp": 
+				resConsulta = repLibro.findByPvp(Long.parseLong(filtro));
+				model.addAttribute("resultadoConsulta", resConsulta);
+				break;
+			case "anyoPublicacion": 
+				resConsulta = repLibro.findByAnyoPublicacion(Integer.parseInt(filtro));
+				model.addAttribute("resultadoConsulta", resConsulta);
+				break;
+		}
+		
+		model.addAttribute("titulo", "Resultados de la búsqueda");
+			
+		return "catalogoLibros";
+		
+	}
+	
 	@RequestMapping(value="/registroLibroCompletado")
 	public String registroLibro(@RequestParam String nombre, Libro libro, Model model) {
 		Editorial editorial = repEditorial.findByNombre(nombre);

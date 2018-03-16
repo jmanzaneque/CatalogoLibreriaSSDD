@@ -25,6 +25,11 @@ public class Editorial {
 	private List<Libro> libros;
 	
 	
+	@Override
+	public String toString() {
+		return  nombre;
+	}
+
 	public Editorial() {
 		
 	}
