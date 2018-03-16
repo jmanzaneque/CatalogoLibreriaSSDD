@@ -5,18 +5,19 @@
 </head>
 <body>
 <h1> Modificar editorial</h1>
-<form method="post" action="/modificarEditorialCompletado(editorial=editorial})">
+<form method="post" action="/modificarEditorialCompletado">
+	<input type="hidden" name="idEditorial" th:value="${editorial.idEditorial}"/>
 	<p>Nombre:</p>
-	<input type="text" name="nombre" value=${editorial.nombre} /><br/>
+	<input type="text" name="nombre" th:field="${editorial.nombre}" />
 	<p>Teléfono:</p>
-	<input type="tel" name="telefono" value=${editorial.telefono} /><br/>
+	<input type="tel" name="telefono" th:field="${editorial.telefono}" />
 	<p>e-mail:</p>
-	<input type="email" name="email" value=${editorial.email} /><br/>
+	<input type="email" name="email" th:field="${editorial.email}" />
 	<p>Código postal:</p>
-	<input type="number" name="cPostal" value=${editorial.cPostal()} /><br/>
+	<input type="number" name="cPostal" th:field="${editorial.cPostal}" />
 	<p>NIF</p>
-	<input type="number" name="cPostal" value=${editorial.nif()} /><br/>
-	<input type="submit" value="Enviar">
+	<input type="number" name="nif" th:field="${editorial.nif}" />
+	<input type="submit" value="Enviar"/>
 </form>
 </body>
 </html>

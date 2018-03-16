@@ -1,4 +1,6 @@
-
+FALTA: Añadir libros a editoriales cuando se registra un libro
+Mostrar libros de cada editorial cuando se muestra el contenido de la editorial
+Creo que no deberíamos poder eliminar un libro de una editorial cuando modificamos la editorial. --> Poner en común
 
 ------------------------------------------------------
 JORGE
