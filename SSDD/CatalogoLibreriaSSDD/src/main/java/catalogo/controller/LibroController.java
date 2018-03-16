@@ -34,11 +34,24 @@ public class LibroController {
 		return "catalogo";
 	}
 	
-	@RequestMapping("/nuevoLibro")
-	public String insertar(Model model) {	
-		List<Editorial> editoriales = repEditorial.findAllByOrderByNombreAsc();
-		model.addAttribute("totalEditoriales",editoriales);		
-		return("registrarLibro");
+
+	@RequestMapping(value="/registroLibroCompletado")
+	public String registroLibro(@RequestParam String nombre, Libro libro, Model model) {
+		Editorial editorial = repEditorial.findByNombre(nombre);
+		libro.setEditorial(editorial);
+		repLibro.save(libro);
+		
+		editorial.getLibros().add(libro);
+		repEditorial.save(editorial);
+		return "libroRegistrado";
+	}
+	@RequestMapping(value="/irAContenidoLibro")
+	public String mostrarLibro (@RequestParam long id, Model model) {
+		
+		Libro libro = repLibro.getOne(id); //Cojo el libro del repositorio de libros según su CLAVE PRIMARIA (id)
+		model.addAttribute("libro", libro); //Lo añado al modelo
+		
+		return "contenidoLibro"; //Devuelvo la plantilla correspondiente con el libro
 	}
 	
 	@RequestMapping(value="/consultaLibro")
@@ -76,6 +89,34 @@ public class LibroController {
 		model.addAttribute("titulo", "Resultados de la búsqueda");
 		return "catalogoLibros";
 	}
+	@RequestMapping(value="/irAModificarLibro")
+	public String moLibro (@RequestParam long idLibro, Model model) {
+		
+		Libro libro = repLibro.getOne(idLibro); //Cojo el libro del repositorio de editoriales según su CLAVE PRIMARIA (id)
+		model.addAttribute("libro", libro); //Lo añado al modelo
+		
+		return "modificarLibro"; //Devuelvo la plantilla correspondiente con el libro
+	}
+	
+	@RequestMapping(value="/modificarLibroCompletado")
+	public String modificarLibro(Libro libro,String campo, 
+		@RequestParam(value="autores") String autores,
+		@RequestParam(value="titulo") String titulo,
+		@RequestParam(value="categoria") String categoria,
+		@RequestParam(value="nPaginas") int nPaginas,
+		@RequestParam(value="pvp") float pvp,
+		@RequestParam(value="anyoPublicacion") int anyoPublicacion) {
+		
+		libro.setAutores(autores);
+		libro.setTitulo(titulo);
+		libro.setCategoria(categoria);
+		libro.setnPaginas(nPaginas);
+		libro.setPvp(pvp);
+		libro.setAnyoPublicacion(anyoPublicacion);
+		return "libroModificado";	
+	}
+
+	
 	
 	@RequestMapping(value="/ordenarLibros")
 	public String ordenarLibros(@RequestParam String criterio, Model model) {
@@ -109,53 +150,13 @@ public class LibroController {
 		return "catalogoLibros";
 		
 	}
-	@RequestMapping(value="/registroLibroCompletado")
-	public String registroLibro(@RequestParam String nombre, Libro libro, Model model) {
-		Editorial editorial = repEditorial.findByNombre(nombre);
-		libro.setEditorial(editorial);
-		repLibro.save(libro);
-		
-		editorial.getLibros().add(libro);
-		repEditorial.save(editorial);
-		return "libroRegistrado";
-	}
-	
-	@RequestMapping(value="/irAContenidoLibro")
-	public String mostrarLibro (@RequestParam long id, Model model) {
-		
-		Libro libro = repLibro.getOne(id); //Cojo el libro del repositorio de libros según su CLAVE PRIMARIA (id)
-		model.addAttribute("libro", libro); //Lo añado al modelo
-		
-		return "contenidoLibro"; //Devuelvo la plantilla correspondiente con el libro
-	}
-	@RequestMapping(value="/irAModificarLibro")
-	public String moLibro (@RequestParam long idLibro, Model model) {
-		
-		Libro libro = repLibro.getOne(idLibro); //Cojo el libro del repositorio de editoriales según su CLAVE PRIMARIA (id)
-		model.addAttribute("libro", libro); //Lo añado al modelo
-		
-		return "modificarLibro"; //Devuelvo la plantilla correspondiente con el libro
-	}
-	
-	@RequestMapping(value="/modificarLibroCompletado")
-	public String modificarLibro(Libro libro,String campo, 
-		@RequestParam(value="autores") String autores,
-		@RequestParam(value="titulo") String titulo,
-		@RequestParam(value="categoria") String categoria,
-		@RequestParam(value="nPaginas") int nPaginas,
-		@RequestParam(value="pvp") float pvp,
-		@RequestParam(value="anyoPublicacion") int anyoPublicacion) {
-		
-		libro.setAutores(autores);
-		libro.setTitulo(titulo);
-		libro.setCategoria(categoria);
-		libro.setnPaginas(nPaginas);
-		libro.setPvp(pvp);
-		libro.setAnyoPublicacion(anyoPublicacion);
-		return "libroModificado";	
-	}
 
-	
+	@RequestMapping("/nuevoLibro")
+	public String insertar(Model model) {	
+		List<Editorial> editoriales = repEditorial.findAllByOrderByNombreAsc();
+		model.addAttribute("totalEditoriales",editoriales);		
+		return("registrarLibro");
+	}
 	
 	@PostConstruct
 	public void init() {
