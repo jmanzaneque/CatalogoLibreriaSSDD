@@ -13,21 +13,28 @@ public interface LibroRepositorio extends JpaRepository<Libro, Long> {
 	List<Libro> findAllByOrderById();
 	
 	List<Libro> findByAutores(String autores);
+	List<Libro> findAllByOrderByAutoresAsc();
 	
 	Libro findByTitulo(String titulo);
+	List<Libro> findAllByOrderByTituloAsc();
 	
 	List<Libro> findByCategoria(String categoria);
+	List<Libro> findAllByOrderByCategoriaAsc();
 	
 	List <Libro> findByNPaginas(int nPaginas);
+	List<Libro> findAllByOrderByNPaginasAsc();
 
 	
 	List <Libro> findByPvp(float pvp);
+	List<Libro> findAllByOrderByPvpAsc();
 
 	
 	List <Libro> findByAnyoPublicacion(int anyoPublicacion);
+	List<Libro> findAllByOrderByAnyoPublicacionAsc();
 
 	
-	List <Libro> findByEditorial(Editorial editorial);
+/*	List <Libro> findByEditorial(Editorial editorial);
+	List<Libro> findAllByOrderByEditorialAsc();*/
 
 
 }

@@ -45,10 +45,8 @@ public class LibroController {
 	public String consultaEditorial (@RequestParam String criterio, 
 									@RequestParam String filtro, 
 									Model model) {
-		
 		List<Libro> resConsulta = null;
 		Libro resLibro = null;
-		
 		switch(criterio) {
 			case "autores": 
 				resConsulta = repLibro.findByAutores(filtro);
@@ -75,13 +73,42 @@ public class LibroController {
 				model.addAttribute("resultadoConsulta", resConsulta);
 				break;
 		}
-		
 		model.addAttribute("titulo", "Resultados de la búsqueda");
-			
+		return "catalogoLibros";
+	}
+	
+	@RequestMapping(value="/ordenarLibros")
+	public String ordenarLibros(@RequestParam String criterio, Model model) {
+		List<Libro> resOrden = null;
+		String criterioMostrar = null;
+		switch(criterio) {
+		case "autores":
+			resOrden = repLibro.findAllByOrderByAutoresAsc();
+			criterioMostrar = "Autores";
+			break;
+		case "titulo":
+			resOrden = repLibro.findAllByOrderByTituloAsc();
+			criterioMostrar = "Titulo";
+			break;
+		case "categoria":
+			resOrden = repLibro.findAllByOrderByCategoriaAsc();
+			criterioMostrar = "Categoria";
+			break;
+		case "nPaginas":
+			resOrden = repLibro.findAllByOrderByNPaginasAsc();
+			criterioMostrar = "Número de Páginas";
+			break;
+		case "pvp":
+			resOrden = repLibro.findAllByOrderByPvpAsc();
+			criterioMostrar = "Precio";
+			break;
+		}
+		model.addAttribute("resultadoConsulta", resOrden);
+		model.addAttribute("titulo", "Libros ordenadas por " + criterioMostrar);
+		
 		return "catalogoLibros";
 		
 	}
-	
 	@RequestMapping(value="/registroLibroCompletado")
 	public String registroLibro(@RequestParam String nombre, Libro libro, Model model) {
 		Editorial editorial = repEditorial.findByNombre(nombre);
@@ -109,6 +136,7 @@ public class LibroController {
 		
 		return "modificarLibro"; //Devuelvo la plantilla correspondiente con el libro
 	}
+	
 	@RequestMapping(value="/modificarLibroCompletado")
 	public String modificarLibro(Libro libro,String campo, 
 		@RequestParam(value="autores") String autores,
@@ -124,9 +152,11 @@ public class LibroController {
 		libro.setnPaginas(nPaginas);
 		libro.setPvp(pvp);
 		libro.setAnyoPublicacion(anyoPublicacion);
-		return "libroModificado";
-		
+		return "libroModificado";	
 	}
+
+	
+	
 	@PostConstruct
 	public void init() {
 		Editorial plaza = new Editorial("Plaza",622754789,"plaza@plaza.es",45200,527896235);
