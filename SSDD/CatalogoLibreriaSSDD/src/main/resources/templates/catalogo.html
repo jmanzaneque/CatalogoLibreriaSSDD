@@ -23,6 +23,23 @@
 		<input type="submit" value="Enviar"/>
 	</form>
 	
+	<!-- Consulta de libros -->
+	<p>Consulta de libros</p>
+	<form method="post" action="/consultaLibro">
+		<select name="criterio" >
+			<option value="nombre">Nombre</option>
+			<option value="email">E-mail</option>
+			<option value="telefono">Telefono</option>
+			<option value="cPostal">Cod. Postal</option>
+			<option value="nif">NIF</option>
+		</select>
+		<input type="text" name="filtro" />
+		<input type="submit" value="Enviar"/>
+	</form>
+	
+	
+	
+	
 	<!-- Ordenar editoriales -->
 	<p>Ordenar editoriales por:</p>
 	<form method="post" action="/ordenarEditoriales">
