@@ -15,10 +15,18 @@
 	<input type="text" name="categoria" th:field="${libro.categoria}" />
 	<p>Número de Páginas:</p>
 	<input type="number" name="nPaginas" th:field="${libro.nPaginas}" />
-	<p>PVP</p>
+	<p>PVP:</p>
 	<input type="number" name="pvp" th:field="${libro.pvp}" />
-	<p>Año de Publicación</p>
+	<p>Año de Publicación:</p>
 	<input type="number" name="anyoPublicacion" th:field="${libro.anyoPublicacion}" />
+	<p>
+		Editorial: 
+		<select name="nombre"> 
+			<option th:each="editorial : ${totalEditoriales}"
+					th:value="${editorial.nombre}" th:text="${editorial.nombre}">
+			</option>
+		</select> 
+	</p>
 	<input type="submit" value="Enviar"/>
 </form>
 </body>

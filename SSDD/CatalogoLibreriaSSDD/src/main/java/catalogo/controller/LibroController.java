@@ -91,7 +91,8 @@ public class LibroController {
 	}
 	@RequestMapping(value="/irAModificarLibro")
 	public String moLibro (@RequestParam long id, Model model) {
-		
+		List<Editorial> editoriales = repEditorial.findAllByOrderByNombreAsc(); //cojo las editoriales para realizar el desplegable
+		model.addAttribute("totalEditoriales",editoriales);	
 		Libro libro = repLibro.getOne(id); //Cojo el libro del repositorio de editoriales según su CLAVE PRIMARIA (id)
 		model.addAttribute("libro", libro); //Lo añado al modelo
 		
@@ -105,8 +106,10 @@ public class LibroController {
 		@RequestParam(value="categoria") String categoria,
 		@RequestParam(value="nPaginas") int nPaginas,
 		@RequestParam(value="pvp") float pvp,
-		@RequestParam(value="anyoPublicacion") int anyoPublicacion) {
-		
+		@RequestParam(value="anyoPublicacion") int anyoPublicacion,
+		@RequestParam(value="nombre") String nombreEditorial) //cojo el nombre de la editorial de las opciones al modificarlo en Modificar Libro
+		{
+		Editorial editorial =repEditorial.findByNombre(nombreEditorial); //busco la editorial con ese nombre
 		Libro libro = repLibro.getOne(id);
 		
 		libro.setAutores(autores);
@@ -115,7 +118,7 @@ public class LibroController {
 		libro.setnPaginas(nPaginas);
 		libro.setPvp(pvp);
 		libro.setAnyoPublicacion(anyoPublicacion);
-		
+		libro.setEditorial(editorial);
 		repLibro.save(libro);
 		return "libroModificado";	
 	}
