@@ -66,6 +66,7 @@
 	<p th:each="libro : ${totalLibros}">
 	<a th:text="${libro.titulo}"></a> 
 	<a th:href="@{/irAContenidoLibro(id=${libro.id})}"> Ver</a>
+	<a th:href="@{/irAModificarlibro(id=${libro.id})}"> Modificar</a>
 	</p>
 	
 	

@@ -1,0 +1,27 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Modificar Libro</title>
+</head>
+<body>
+<h1> Modificar Libro</h1>
+<form method="post" action="/modificarlibroCompletado(libro=libro})">
+	<p>Autores:</p>
+	<input type="text" name="autores" value=${libro.autores} /><br/>
+	<p>Título:</p>
+	<input type="text" name="titulo" value=${libro.telefono} /><br/>
+	<p>Categoría:</p>
+	<input type="text" name="categoria" value=${libro.categoria} /><br/>
+	<p>Número de Páginas:</p>
+	<input type="number" name="nPaginas" value=${libro.nPaginas()} /><br/>
+	<p>PVP</p>
+	<input type="number" name="pvp" value=${libro.pvp()} /><br/>
+	<p>Año de Publicación</p>
+	<input type="number" name="anyoPublicacion" value=${libro.anyoPublicacion()} /><br/>
+	<input type="submit" value="Enviar">
+
+</form>
+</body>
+</html>
+
+

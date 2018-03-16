@@ -93,18 +93,22 @@ public class EditorialController {
 	}
 
 	@RequestMapping(value="/modificarEditorialCompletado")
-	public String modificarEditorial(Editorial editorial,String campo, 
+	public String modificarEditorial(@RequestParam(value="idEditorial") long idEditorial,	 
 		@RequestParam(value="nombre") String nombre,
 		@RequestParam(value="telefono") long telefono,
 		@RequestParam(value="email") String email,
 		@RequestParam(value="cPostal") long cPostal,
 		@RequestParam(value="nif") long nif) {
 		
+		Editorial editorial = repEditorial.getOne(idEditorial);
+
 		editorial.setNombre(nombre);
 		editorial.setTelefono(telefono);
 		editorial.setEmail(email);
 		editorial.setcPostal(cPostal);
 		editorial.setNif(nif);
+		
+		repEditorial.save(editorial);
 		return "editorialModificada";
 		
 	}
