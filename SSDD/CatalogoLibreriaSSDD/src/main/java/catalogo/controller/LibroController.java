@@ -90,16 +90,16 @@ public class LibroController {
 		return "catalogoLibros";
 	}
 	@RequestMapping(value="/irAModificarLibro")
-	public String moLibro (@RequestParam long idLibro, Model model) {
+	public String moLibro (@RequestParam long id, Model model) {
 		
-		Libro libro = repLibro.getOne(idLibro); //Cojo el libro del repositorio de editoriales según su CLAVE PRIMARIA (id)
+		Libro libro = repLibro.getOne(id); //Cojo el libro del repositorio de editoriales según su CLAVE PRIMARIA (id)
 		model.addAttribute("libro", libro); //Lo añado al modelo
 		
 		return "modificarLibro"; //Devuelvo la plantilla correspondiente con el libro
 	}
 	
 	@RequestMapping(value="/modificarLibroCompletado")
-	public String modificarLibro(Libro libro,String campo, 
+	public String modificarLibro(@RequestParam(value="id") long id,	
 		@RequestParam(value="autores") String autores,
 		@RequestParam(value="titulo") String titulo,
 		@RequestParam(value="categoria") String categoria,
@@ -107,12 +107,16 @@ public class LibroController {
 		@RequestParam(value="pvp") float pvp,
 		@RequestParam(value="anyoPublicacion") int anyoPublicacion) {
 		
+		Libro libro = repLibro.getOne(id);
+		
 		libro.setAutores(autores);
 		libro.setTitulo(titulo);
 		libro.setCategoria(categoria);
 		libro.setnPaginas(nPaginas);
 		libro.setPvp(pvp);
 		libro.setAnyoPublicacion(anyoPublicacion);
+		
+		repLibro.save(libro);
 		return "libroModificado";	
 	}
 
