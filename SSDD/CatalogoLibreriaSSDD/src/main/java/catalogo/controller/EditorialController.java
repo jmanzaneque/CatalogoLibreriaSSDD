@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import catalogo.model.Editorial;
 import catalogo.repository.EditorialRepositorio;
-import catalogo.repository.LibroRepositorio;
 
 @Controller
 public class EditorialController {
@@ -50,8 +49,8 @@ public class EditorialController {
 									@RequestParam String filtro, 
 									Model model) {
 		
-		List<Editorial> resConsulta = null;
-		Editorial resEditorial = null;
+		List<Editorial> resConsulta = null;	//Para consultas que devuelven varias editoriales
+		Editorial resEditorial = null;		//Para consultas que devuelven una única editorial
 		
 		switch(criterio) {
 			case "nombre": 
@@ -157,8 +156,8 @@ public class EditorialController {
 	@PostConstruct
 	public void init() {
 		repEditorial.save(new Editorial("Anaya",628015678,"anaya@anaya.es",45200,527897865));
-		repEditorial.save(new Editorial("SM",628015678,"editorialSm@Sm.es",45200,582827865));
-
+		repEditorial.save(new Editorial("SM",628015655,"editorialSm@Sm.es",45200,582827675));
+		repEditorial.save(new Editorial("Rubio",11112655,"rubioEditorial@rubio.es",45210,3333333));
 	}
 	
 

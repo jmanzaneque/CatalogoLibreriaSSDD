@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import catalogo.model.Editorial;
 import catalogo.model.Libro;
 
 public interface LibroRepositorio extends JpaRepository<Libro, Long> {

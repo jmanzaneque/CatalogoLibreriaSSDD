@@ -112,6 +112,12 @@ public class LibroController {
 		Editorial editorial =repEditorial.findByNombre(nombreEditorial); //busco la editorial con ese nombre
 		Libro libro = repLibro.getOne(id);
 		
+		Editorial antiguaEditorial = libro.getEditorial();	//Cogemos la antigua editorial del libro
+		if (editorial != antiguaEditorial) {				//Si se ha modificado, quitamos del listado de libros de la antigua editorial el libro
+			antiguaEditorial.getLibros().remove(libro);		
+			repEditorial.save(antiguaEditorial);
+		}
+		
 		libro.setAutores(autores);
 		libro.setTitulo(titulo);
 		libro.setCategoria(categoria);
@@ -119,7 +125,10 @@ public class LibroController {
 		libro.setPvp(pvp);
 		libro.setAnyoPublicacion(anyoPublicacion);
 		libro.setEditorial(editorial);
+		repEditorial.save(editorial); 	//Actualiza la editorial
 		repLibro.save(libro);
+		
+		
 		return "libroModificado";	
 	}
 
@@ -169,7 +178,7 @@ public class LibroController {
 	public void init() {
 		Editorial plaza = new Editorial("Plaza",622754789,"plaza@plaza.es",45200,527896235);
 		repEditorial.save(plaza);
-		Editorial castro = new Editorial("Castro",62802348,"castroSm@castro.es",45200,582832265);
+		Editorial castro = new Editorial("Castro",62802348,"castroSm@castro.es",45210,582832265);
 		repEditorial.save(castro);
 		repLibro.save(new Libro("Paco León", "En busca del arca", "Aventura",122, 33, 2007, plaza));
 		repLibro.save(new Libro("Marco Galán", "Sueños rotos", "Aventura",155, 32, 2004, castro));

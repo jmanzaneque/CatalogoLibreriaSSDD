@@ -2,7 +2,6 @@ package catalogo.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Iterator;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

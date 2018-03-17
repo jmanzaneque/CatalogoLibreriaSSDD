@@ -10,6 +10,14 @@
 		<span th:text=" 'E-mail: ' + ${editorial.email}"></span><br/>
 		<span th:text=" 'Código postal: ' + ${editorial.cPostal}"></span><br/>
 		
+		<!-- Listado de libros -->
+		<h2>Libros</h2>
+		<p th:each="libro : ${editorial.libros}">
+		<a th:text="${libro.titulo}"></a> 
+		<a th:href="@{/irAContenidoLibro(id=${libro.id})}"> Ver</a>
+		<a th:href="@{/irAModificarLibro(id=${libro.id})}"> Modificar</a>
+		</p>
+		
 		<a href="/">Volver al catálogo</a>					<!-- El enlace es al controlador, que es quien irá al catálogo -->
 </body>
 </html>
