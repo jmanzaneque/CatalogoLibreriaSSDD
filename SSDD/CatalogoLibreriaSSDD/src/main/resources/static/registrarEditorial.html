@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<link rel="stylesheet" href="Styles.css" type="text/css">
-<title>Registro editorial</title>
+	<meta charset="ISO-8859-1"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="Styles.css" type="text/css">
+	<title>Registro editorial</title>
 </head>
 <body>
-<h1> Registrar nueva editorial</h1>
-<div class="container">
+<div id="titulo">
+	<h1> Registrar nueva editorial</h1>
+</div>
+
+<div class="container border border-secondary" id="formulario">
 <form method="post" action="/registroEditorialCompletado">
 	<div class="form-group col-lg-5">
 		<label>Nombre</label>
@@ -35,9 +38,13 @@
 		<input type="number" class="form-control" placeholder="Código postal" name="cPostal"/>
 		<small class="form-text text-muted">Ejemplo: 28080</small>
 	</div>
-	<br/>
 	<input type="submit" class="btn btn-dark" value="Enviar">
 </form>
 </div>
+
+<div class="alert alert-primary" id="backToMenu">
+	<a href="/" class="alert-link" >Volver al catálogo</a>
+</div>
+
 </body>
 </html>

@@ -1,11 +1,20 @@
 @charset "ISO-8859-1";
 
-.container{
+#formulario{
 	margin-top: 10px;
 	margin-left: 5px;
+	padding-bottom: 15px;
+	margin-bottom: 10px;
 }
 
-h1{
-	margin-top: 0.3em;
-	margin-left: 20px;
+#titulo{
+	margin-top: 0.5em;
+	margin-left: 30px;
+}
+
+#backToMenu{
+	width:100%;
+	margin-bottom: 0%;
+	margin-right: 0%;
+	
 }
