@@ -7,12 +7,27 @@
 	<title>Registro libro</title>
 </head>
 <body>
-<div id="titulo">
+<div id="cabecera">
 	<h1> Registrar nuevo libro</h1>
 </div>
 
-<div class="container border border-secondary" id="formulario">
+<div class="container" id="formulario">
 <form method="post" action="/registroLibroCompletado">
+	<div class="form-group col-lg-5">
+		<label>Título</label>
+		<input type="text" class="form-control" placeholder="Título" name="titulo"/>
+	</div>	
+	
+	<div class="form-group col-lg-5">
+		<label>Autores</label>
+		<input type="text" class="form-control" placeholder="Autores" name="autores"/>
+	</div>	
+	
+	<div class="form-group col-lg-5">
+		<label>Categoría</label>
+		<input type="text" class="form-control" placeholder="Categoría" name="categoria"/>
+	</div>
+	
 	<div class="form-group col-lg-5">
 		<div class="form-inline"> 
 			<label>Editorial</label>
@@ -26,28 +41,17 @@
 	</div>
 	
 	<div class="form-group col-lg-5">
-		<label>Autores</label>
-		<input type="text" class="form-control" placeholder="Autores" name="autores"/>
-	</div>	
-	
-	<div class="form-group col-lg-5">
-		<label>Título</label>
-		<input type="text" class="form-control" placeholder="Título" name="titulo"/>
-	</div>
-	<div class="form-group col-lg-5">
-		<label>Categoría</label>
-		<input type="text" class="form-control" placeholder="Categoría" name="categoria"/>
-	</div>
-	<div class="form-group col-lg-5">
 		<label>Número de páginas</label>
 		<input type="number" class="form-control" name="nPaginas"/>
 		<small class="form-text text-muted">Introduzca un número positivo</small>
 	</div>
+	
 	<div class="form-group col-lg-5">
 		<label>Precio</label>
 		<input type="number" class="form-control" placeholder="Precio" name="pvp"/>
 		<small class="form-text text-muted">Introduzca un número positivo</small>
 	</div>
+	
 	<div class="form-group col-lg-5">
 		<label>Año de publicación</label>
 		<input type="number" class="form-control" placeholder="Año de publicación" name="anyoPublicacion"/>
@@ -58,7 +62,7 @@
 </div>
 
 <div class="alert alert-primary" id="backToMenu">
-	<span><a href="/" class="alert-link" >Volver al catálogo</a></span>
+	<a href="/" class="alert-link" >Volver al catálogo</a>
 </div>
 
 </body>

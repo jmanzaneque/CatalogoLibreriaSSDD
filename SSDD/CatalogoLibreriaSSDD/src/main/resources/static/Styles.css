@@ -5,9 +5,18 @@
 	margin-left: 5px;
 	padding-bottom: 15px;
 	margin-bottom: 10px;
+	width:50%;
+	
 }
 
-#titulo{
+#listadoLibros{
+	margin-left: 30px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width:50%;
+}
+
+#cabecera{
 	margin-top: 0.5em;
 	margin-left: 30px;
 }
@@ -21,4 +30,18 @@
 
 #nuevaEditorial{
 	margin-left: 15px; 
+}
+
+#linkTabulado{
+	margin-left: 15px;
+}
+
+#info{
+	margin-left: 25px;
+	margin-right: 25%;
+	width: 80%;
+}
+
+#boton{
+	margin-left: 15px;
 }

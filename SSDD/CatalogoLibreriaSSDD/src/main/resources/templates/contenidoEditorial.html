@@ -1,23 +1,60 @@
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>Contenido editorial</title>
+	<meta charset="UTF-8"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+	<link rel="stylesheet" href="Styles.css" type="text/css"/>
+	<title>Información de editorial</title>
 </head>
 <body>
-		<span th:text=" 'Nombre: ' + ${editorial.nombre}"></span><br/>
-		<span th:text=" 'NIF: ' + ${editorial.nif}"></span><br/>
-		<span th:text=" 'Telefono: ' + ${editorial.telefono}"></span><br/>
-		<span th:text=" 'E-mail: ' + ${editorial.email}"></span><br/>
-		<span th:text=" 'Código postal: ' + ${editorial.cPostal}"></span><br/>
-		
+	<div id="cabecera">
+		<h1> Datos de la editorial</h1>
+	</div>
+	
+	<table class="table" id="info">
+		<tbody>
+			<tr>
+				<td>Nombre</td>
+				<td><span th:text="${editorial.nombre}"></span></td>
+			</tr>
+			<tr>
+				<td>NIF</td>
+				<td><span th:text="${editorial.nombre}"></span></td>
+			</tr>
+			<tr>
+				<td>Teléfono</td>
+				<td><span th:text="${editorial.telefono}"></span></td>
+			</tr>
+			<tr>
+				<td>e-mail</td>
+				<td><span th:text="${editorial.email}"></span></td>
+			</tr>
+			<tr>
+				<td>Código postal</td>
+				<td><span th:text="${editorial.cPostal}"></span></td>
+			</tr>
+		</tbody>
+	</table>
+			
 		<!-- Listado de libros -->
-		<h2>Libros</h2>
-		<p th:each="libro : ${editorial.libros}">
-		<a th:text="${libro.titulo}"></a> 
-		<a th:href="@{/irAContenidoLibro(id=${libro.id})}"> Ver</a>
-		<a th:href="@{/irAModificarLibro(id=${libro.id})}"> Modificar</a>
-		</p>
+		<div id="cabecera">
+			<h3>Libros</h3>
+		</div>
 		
-		<a href="/">Volver al catálogo</a>					<!-- El enlace es al controlador, que es quien irá al catálogo -->
+		<div class="container border border-secondary" id="listadoLibros">
+		<p th:each="libro : ${editorial.libros}">
+			<div class="inline">
+				<a th:text="${libro.titulo}"></a> 
+				<a class="alert-link" id="linkTabulado" th:href="@{/irAContenidoLibro(id=${libro.id})}">Ver</a>
+				<a class="alert-link" id="linkTabulado" th:href="@{/irAModificarLibro(id=${libro.id})}">Modificar</a>
+			</div>
+		</p>
+		</div>
+		
+		<br/>
+		
+		<div class="alert alert-primary" id="backToMenu">
+			<a href="/" class="alert-link" >Volver al catálogo</a>
+		</div>				<!-- El enlace es al controlador, que es quien irá al catálogo -->
 </body>
 </html>

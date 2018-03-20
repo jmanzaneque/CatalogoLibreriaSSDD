@@ -1,16 +1,51 @@
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>Contenido editorial</title>
+	<meta charset="UTF-8"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+	<link rel="stylesheet" href="Styles.css" type="text/css"/>
+	<title>Información de libro</title>
 </head>
 <body>
-		<span th:text=" 'Título: ' + ${libro.titulo}"></span><br/>
-		<span th:text=" 'Autores: ' + ${libro.autores}"></span><br/>
-		<span th:text=" 'Categoria: ' + ${libro.categoria}"></span><br/>
-		<span th:text=" 'Número de Páginas: ' + ${libro.nPaginas}"></span><br/>
-		<span th:text=" 'Precio: ' + ${libro.pvp}"></span><br/>
-		<span th:text=" 'Año de Publicación: ' + ${libro.anyoPublicacion}"></span><br/>
-		<span th:text=" 'Editorial: ' + ${libro.editorial}"></span><br/>
-		<a href="/">Volver al catálogo</a>					<!-- El enlace es al controlador, que es quien irá al catálogo -->
+	<div id="cabecera">
+		<h1> Información del libro</h1>
+	</div>
+
+	<table class="table" id="info">
+		<tbody>
+			<tr>
+				<td>Título</td>
+				<td><span th:text="${libro.titulo}"></span></td>
+			</tr>
+			<tr>
+				<td>Autores</td>
+				<td><span th:text="${libro.autores}"></span></td>
+			</tr>
+			<tr>
+				<td>Categoría</td>
+				<td><span th:text="${libro.categoria}"></span></td>
+			</tr>
+			<tr>
+				<td>Número de páginas</td>
+				<td><span th:text="${libro.nPaginas}"></span></td>
+			</tr>
+			<tr>
+				<td>Precio</td>
+				<td><span th:text="${libro.pvp}"></span></td>
+			</tr>
+			<tr>
+				<td>Año de publicación</td>
+				<td><span th:text="${libro.anyoPublicacion}"></span></td>
+			</tr>
+			<tr>
+				<td>Editorial</td>
+				<td><span th:text="${libro.editorial}"></span></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<div class="alert alert-primary" id="backToMenu">
+		<a href="/" class="alert-link" >Volver al catálogo</a>
+	</div>				<!-- El enlace es al controlador, que es quien irá al catálogo -->
 </body>
 </html>

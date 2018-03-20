@@ -7,17 +7,13 @@
 	<title>Modificar libro</title>
 </head>
 <body>
-<div id="titulo">
+<div id="cabecera">
 	<h1> Modificar libro</h1>
 </div>
 
-<div class="container border border-secondary" id="formulario">
+<div class="container" id="formulario">
 <form method="post" action="/modificarLibroCompletado">
 	<input type="hidden" name="id" th:value="${libro.id}"/>
-	<div class="form-group col-lg-5">
-		<label>Autores</label>
-		<input type="text" class= "form-control" name="autores" th:field="${libro.autores}" />
-	</div>
 
 	<div class="form-group col-lg-5">
 		<label>Título</label>
@@ -25,8 +21,22 @@
 	</div>
 	
 	<div class="form-group col-lg-5">
+		<label>Autores</label>
+		<input type="text" class= "form-control" name="autores" th:field="${libro.autores}" />
+	</div>
+	
+	<div class="form-group col-lg-5">
 		<label>Categoría</label>
 		<input type="text" class="form-control" name="categoria" th:field="${libro.categoria}" />
+	</div>
+	
+	<div class="form-group col-lg-5">
+		<label>Editorial</label>
+		<select class="form-control" name="nombre"> 
+			<option th:each="editorial : ${totalEditoriales}"
+					th:value="${editorial.nombre}" th:text="${editorial.nombre}">
+			</option>
+		</select> 
 	</div>
 	
 	<div class="form-group col-lg-5">
@@ -46,18 +56,15 @@
 		<input type="number" class="form-control" name="anyoPublicacion" th:field="${libro.anyoPublicacion}" />
 		
 	</div>
-	
-	<div class="form-group col-lg-5">
-		<label>Editorial</label>
-		<select class="form-control" name="nombre"> 
-			<option th:each="editorial : ${totalEditoriales}"
-					th:value="${editorial.nombre}" th:text="${editorial.nombre}">
-			</option>
-		</select> 
-	</div>
-	<input type="submit" value="Modificar"/>
+		
+	<input type="submit" class="btn btn-dark" value="Modificar"/>
 </form>
 </div>
+
+	<div class="alert alert-primary" id="backToMenu">
+		<a href="/" class="alert-link" >Volver al catálogo</a>
+	</div>
+	
 </body>
 </html>
 
