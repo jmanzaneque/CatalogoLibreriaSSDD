@@ -1,11 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>	Libro Modificado</title>
+	<meta charset="UTF-8"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+	<link rel="stylesheet" href="Styles.css" type="text/css"/>
+	<title>Libro Modificado</title>
 </head>
 <body>
-	<h2>	El libro ha sido modificada con exito.</h2>
-	<a href="/">Volver al catalogo</a>
+	<div id="titulo">
+		<h2>El libro ha sido modificado con éxito.</h2>
+	</div>
+	
+	<div class="alert alert-primary" id="backToMenu">
+		<a href="/" class="alert-link" >Volver al catálogo</a>
+	</div>
 </body>
 </html>
