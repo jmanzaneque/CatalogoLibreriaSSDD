@@ -1,33 +1,65 @@
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>Registro Libro</title>
+	<meta charset="UTF-8"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+	<link rel="stylesheet" href="Styles.css" type="text/css"/>
+	<title>Registro libro</title>
 </head>
 <body>
-<h1> Registrar nuevo libro</h1>
+<div id="titulo">
+	<h1> Registrar nuevo libro</h1>
+</div>
+
+<div class="container border border-secondary" id="formulario">
 <form method="post" action="/registroLibroCompletado">
-	<p>
-		Editorial: 
-		<select name="nombre"> 
+	<div class="form-group col-lg-5">
+		<div class="form-inline"> 
+			<label>Editorial</label>
+			<a href="/registrarEditorial.html" class="alert-link" id="nuevaEditorial">Registrar nueva editorial</a>
+		</div>
+		<select class="form-control" name="nombre"> 
 			<option th:each="editorial : ${totalEditoriales}"
 					th:value="${editorial.nombre}" th:text="${editorial.nombre}">
 			</option>
 		</select> 
-		<a href="/registrarEditorial.html">Registrar nueva editorial</a>
-	</p>
-	<p>Autores:</p>
-	<input type="text" name="autores"/>
-	<p>Título:</p>
-	<input type="text" name="titulo"/>
-	<p>Categoría:</p>
-	<input type="text" name="categoria"/>
-	<p>Número de Páginas:</p>
-	<input type="number" name="nPaginas"/>
-	<p>Precio</p>
-	<input type="number" name="pvp"/>
-	<p>Año de Publicación</p>
-	<input type="number" name="anyoPublicacion"/>
-	<input type="submit" value="Enviar"/>
+	</div>
+	
+	<div class="form-group col-lg-5">
+		<label>Autores</label>
+		<input type="text" class="form-control" placeholder="Autores" name="autores"/>
+	</div>	
+	
+	<div class="form-group col-lg-5">
+		<label>Título</label>
+		<input type="text" class="form-control" placeholder="Título" name="titulo"/>
+	</div>
+	<div class="form-group col-lg-5">
+		<label>Categoría</label>
+		<input type="text" class="form-control" placeholder="Categoría" name="categoria"/>
+	</div>
+	<div class="form-group col-lg-5">
+		<label>Número de páginas</label>
+		<input type="number" class="form-control" name="nPaginas"/>
+		<small class="form-text text-muted">Introduzca un número positivo</small>
+	</div>
+	<div class="form-group col-lg-5">
+		<label>Precio</label>
+		<input type="number" class="form-control" placeholder="Precio" name="pvp"/>
+		<small class="form-text text-muted">Introduzca un número positivo</small>
+	</div>
+	<div class="form-group col-lg-5">
+		<label>Año de publicación</label>
+		<input type="number" class="form-control" placeholder="Año de publicación" name="anyoPublicacion"/>
+	</div>
+	
+	<input type="submit" class="btn btn-dark" value="Enviar"/>
 </form>
+</div>
+
+<div class="alert alert-primary" id="backToMenu">
+	<span><a href="/" class="alert-link" >Volver al catálogo</a></span>
+</div>
+
 </body>
 </html>
