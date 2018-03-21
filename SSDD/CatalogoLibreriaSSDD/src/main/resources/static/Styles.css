@@ -45,6 +45,18 @@
 	margin-left: 15px;
 }
 
+<<<<<<< HEAD
 #mainNav{
 	height: 12px;
+=======
+
+.navbar {
+	background-color: black;
+}
+
+#inWhite {
+	color:white;
+	margin-top: 0.5em;
+	margin-left: 15px;
+>>>>>>> b545dc0cc43a661ca227a6ba7d316c0ee7ef0cb2
 }
