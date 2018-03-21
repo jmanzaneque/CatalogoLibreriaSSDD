@@ -49,3 +49,9 @@
 .navbar {
 	background-color: black;
 }
+
+#inWhite {
+	color:white;
+	margin-top: 0.5em;
+	margin-left: 15px;
+}
