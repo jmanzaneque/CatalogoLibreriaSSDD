@@ -1,13 +1,29 @@
 <html xmlns:th="http://www.thymeleaf.org">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+	<link rel="stylesheet" href="Styles.css" type="text/css"/>
+</head>
 <body>
-	<h1>Catálogo de libros v.1</h1>
+	<nav class="navbar navbar-dark bg-dark">
+		<div class= "navbar-inner">
+			<div class="container">
+			<a class="brand" href="/">
+				<font style = "verticlal-aling:inherit;">
+					<font style = "vertical-aling:inherit;">Catálogo de libros</font>
+				</font>
+			</a>
+			</div>
+		</div>
+	
+	</nav>
 	
 	<!-- Registro de nueva editorial -->
-	<a href="/registrarEditorial.html">Registrar nueva editorial</a>
-	<br/>
+	<a href="/registrarEditorial.html" role ="button" class= "btn btn-primary btn-lg btn-block"> Registrar nueva editorial
+	</a>
+
 	<!-- Registro de nuevo Libro -->
-	<a href="/nuevoLibro">Registrar nuevo libro</a>
+	<a href="/nuevoLibro" role ="button" class= "btn btn-dark btn-lg btn-block">Registrar nuevo libro</a>
 
 	<!-- Consulta de editoriales -->
 	<p>Consulta de editoriales</p>
