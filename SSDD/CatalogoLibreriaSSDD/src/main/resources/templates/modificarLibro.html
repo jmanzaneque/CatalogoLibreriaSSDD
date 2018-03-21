@@ -53,7 +53,7 @@
 	
 	<div class="form-group col-lg-5">
 		<label>Año de publicación</label>
-		<input type="number" class="form-control" name="anyoPublicacion" th:field="${libro.anyoPublicacion}" />
+		<input type="number" min="-15000" max="2018" class="form-control" name="anyoPublicacion" th:field="${libro.anyoPublicacion}" />
 		
 	</div>
 		
