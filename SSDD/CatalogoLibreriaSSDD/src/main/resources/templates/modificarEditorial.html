@@ -24,7 +24,7 @@
 	</div>
 	<div class="form-group col-lg-5">
 		<label>Teléfono</label>
-		<input type="tel" minlength="9" maxlength="14" class="form-control" name="telefono" th:field="${editorial.telefono}" />
+		<input type="tel" pattern="(^[9|7|6]\d{8}$" class="form-control" name="telefono" th:field="${editorial.telefono}" />
 		<small class="form-text text-muted">Introduzca 9 dígitos</small>
 	</div>
 	<div class="form-group col-lg-5">
