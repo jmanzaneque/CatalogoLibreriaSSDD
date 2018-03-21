@@ -7,11 +7,40 @@
 	<title>Registro editorial</title>
 </head>
 <body>
-<div id="titulo">
-	<h1> Registrar nueva editorial</h1>
-</div>
+	<div class="app-sidebar sidebar-dark sidebar-slide-left">
+  	<div id="sidebar-nav" class="sidebar-nav" data-children=".sidebar-nav-group">
+    		<a href="/" class="sidebar-nav-link">
+     		 <i class="icon-rocket"></i> Catálogo
+   		</a>
+    <div class="sidebar-nav-group">
+      <a href="#components" class="sidebar-nav-link collapsed" data-toggle="collapse" data-parent="#sidebar-nav">
+        <i class="icon-puzzle"></i> Libros
+      </a>
+      <div id="components" class="sidebar-nav-group collapse">
+        <a href="./nuevoLibro" class="sidebar-nav-link">Registrar nuevo libro</a><br/>
+        <a href="/" class="sidebar-nav-link">Libros</a><br/>
+        <a href="/" class="sidebar-nav-link">Búsqueda de libros</a><br/>
 
-<div class="container" id="formulario">
+      </div>
+    </div>
+    <div class="sidebar-nav-group">
+      <a href="#content" class="sidebar-nav-link collapsed" data-toggle="collapse" data-parent="#sidebar-nav">
+        <i class="icon-folder"></i> Editoriales
+      </a>
+      <div id="content" class="sidebar-nav-group collapse">
+        <a href="./registrarEditorial.html" class="sidebar-nav-link">Registrar nueva editorial</a><br/>
+        <a href="./pages/content/timeline.html" class="sidebar-nav-link">Editoriales</a><br/>
+        <a href="./pages/content/timeline.html" class="sidebar-nav-link">Búsqueda de editoriales</a><br/>
+      </div>
+    </div>
+
+    </div>
+  </div>
+
+
+
+<div class="app-content" >
+<div class="formu" >
 <form method="post" action="/registroEditorialCompletado">
 	<div class="form-group col-lg-5">
 		<label>Nombre</label>
@@ -39,11 +68,14 @@
 	</div>
 	<input type="submit" class="btn btn-dark" id="boton" value="Registrar">
 </form>
-</div>
+</div> 
 
-<div class="alert alert-primary" id="backToMenu">
-	<a href="/" class="alert-link" >Volver al catálogo</a>
-</div>
 
+</div>
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+	
 </body>
 </html>

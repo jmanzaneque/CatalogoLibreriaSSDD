@@ -57,3 +57,22 @@
 	margin-top: 0.5em;
 	margin-left: 15px;
 }
+
+.app-content {
+	position: relative;
+	overflow: auto;
+}
+
+.app-sidebar.sidebar-dark.sidebar-slide-left {
+
+    background: #343a40;
+    float: left;
+    font-size: 0.95rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: .95rem 0;
+    position: relative;
+    width: 15rem;
+    height: 100%;
+
+}
