@@ -135,33 +135,61 @@ public class LibroController {
 	
 	
 	@RequestMapping(value="/ordenarLibros")
-	public String ordenarLibros(@RequestParam String criterio, Model model) {
+	public String ordenarLibros(@RequestParam String criterio,@RequestParam String orden, Model model) {
 		List<Libro> resOrden = null;
 		String criterioMostrar = null;
 		switch(criterio) {
 		case "autores":
-			resOrden = repLibro.findAllByOrderByAutoresAsc();
+			if(orden.equalsIgnoreCase("Ascendente")) {
+				resOrden = repLibro.findAllByOrderByAutoresAsc();
+			}else if(orden.equalsIgnoreCase("Descendente")){
+				resOrden = repLibro.findAllByOrderByAutoresDesc();
+			}
 			criterioMostrar = "Autores";
 			break;
 		case "titulo":
-			resOrden = repLibro.findAllByOrderByTituloAsc();
+			if(orden.equalsIgnoreCase("Ascendente")) {
+				resOrden = repLibro.findAllByOrderByTituloAsc();
+			}else if(orden.equalsIgnoreCase("Descendente")){
+				resOrden = repLibro.findAllByOrderByTituloDesc();
+			}
 			criterioMostrar = "Titulo";
 			break;
 		case "categoria":
-			resOrden = repLibro.findAllByOrderByCategoriaAsc();
+			if(orden.equalsIgnoreCase("Ascendente")) {
+				resOrden = repLibro.findAllByOrderByCategoriaAsc();
+			}else if(orden.equalsIgnoreCase("Descendente")){
+				resOrden = repLibro.findAllByOrderByCategoriaDesc();
+			}
 			criterioMostrar = "Categoria";
 			break;
 		case "nPaginas":
-			resOrden = repLibro.findAllByOrderByNPaginasAsc();
+			if(orden.equalsIgnoreCase("Ascendente")) {
+				resOrden = repLibro.findAllByOrderByNPaginasAsc();
+			}else if(orden.equalsIgnoreCase("Descendente")){
+				resOrden = repLibro.findAllByOrderByNPaginasDesc();
+			}
 			criterioMostrar = "Número de Páginas";
 			break;
 		case "pvp":
-			resOrden = repLibro.findAllByOrderByPvpAsc();
+			if(orden.equalsIgnoreCase("Ascendente")) {
+				resOrden = repLibro.findAllByOrderByPvpAsc();
+			}else if(orden.equalsIgnoreCase("Descendente")){
+				resOrden = repLibro.findAllByOrderByPvpDesc();
+			}
 			criterioMostrar = "Precio";
+			break;
+		case "anyoPublicacion":
+			if(orden.equalsIgnoreCase("Ascendente")) {
+				resOrden = repLibro.findAllByOrderByAnyoPublicacionAsc();
+			}else if(orden.equalsIgnoreCase("Descendente")){
+				resOrden = repLibro.findAllByOrderByAnyoPublicacionDesc();
+			}
+			criterioMostrar = "Año de Publicación";
 			break;
 		}
 		model.addAttribute("resultadoConsulta", resOrden);
-		model.addAttribute("titulo", "Libros ordenadas por " + criterioMostrar);
+		model.addAttribute("titulo", "Libros ordenadas por " + criterioMostrar + " " + orden);
 		
 		return "catalogoLibros";
 		

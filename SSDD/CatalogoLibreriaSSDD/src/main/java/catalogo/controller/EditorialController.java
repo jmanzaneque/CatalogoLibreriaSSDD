@@ -113,35 +113,56 @@ public class EditorialController {
 	}
 
 	@RequestMapping(value="/ordenarEditoriales")
-	public String ordenaEditoriales(@RequestParam String criterio, Model model) {
+	public String ordenaEditoriales(@RequestParam String criterio,@RequestParam String orden, Model model) {
 		List<Editorial> resOrden = null;
 		String criterioMostrar = null;
 		switch(criterio) {
 		case "nombre":
-			resOrden = repEditorial.findAllByOrderByNombreAsc();
-			criterioMostrar = criterio;
+			if(orden.equalsIgnoreCase("Ascendente")) {
+				resOrden = repEditorial.findAllByOrderByNombreAsc();
+			}else if(orden.equalsIgnoreCase("Descendente")){
+				resOrden = repEditorial.findAllByOrderByNombreDesc();
+				
+			}
+			criterioMostrar = "Nombre";
 			break;
 		case "email":
-			resOrden = repEditorial.findAllByOrderByEmailAsc();
-			criterioMostrar = "e-mail";
+			if(orden.equalsIgnoreCase("Ascendente")) {
+				resOrden = repEditorial.findAllByOrderByEmailAsc();
+			}else if(orden.equalsIgnoreCase("Descendente")){
+				resOrden = repEditorial.findAllByOrderByCPostalDesc();
+			}
+			criterioMostrar = "E-mail";
 			break;
 		case "telefono":
-			resOrden = repEditorial.findAllByOrderByTelefonoAsc();
-			criterioMostrar = "teléfono";
+			if(orden.equalsIgnoreCase("Ascendente")) {
+				resOrden = repEditorial.findAllByOrderByTelefonoAsc();
+			}else if(orden.equalsIgnoreCase("Descendente")){
+				resOrden = repEditorial.findAllByOrderByTelefonoDesc();
+			}
+			criterioMostrar = "Teléfono";
 			break;
 		case "cPostal":
-			resOrden = repEditorial.findAllByOrderByCPostalAsc();
+			if(orden.equalsIgnoreCase("Ascendente")) {
+				resOrden = repEditorial.findAllByOrderByCPostalAsc();
+			}else if(orden.equalsIgnoreCase("Descendente")){
+				resOrden = repEditorial.findAllByOrderByCPostalDesc();;
+			}
 			criterioMostrar = "Código Postal";
 			break;
 		case "nif":
-			resOrden = repEditorial.findAllByOrderByNifAsc();
+			if(orden.equalsIgnoreCase("Ascendente")) {
+				resOrden = repEditorial.findAllByOrderByNifAsc();
+			}else if(orden.equalsIgnoreCase("Descendente")){
+				resOrden = repEditorial.findAllByOrderByNifDesc();
+			}
 			criterioMostrar = "NIF";
 			break;
 
 		}
 		
 		model.addAttribute("resultadoConsulta", resOrden);
-		model.addAttribute("titulo", "Editoriales ordenadas por " + criterioMostrar);
+		model.addAttribute("titulo", "Editoriales ordenadas por " + criterioMostrar + " " + orden);
 		
 		return "catalogoEditoriales";
 	}
