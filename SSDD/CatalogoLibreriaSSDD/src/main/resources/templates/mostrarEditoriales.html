@@ -1,13 +1,11 @@
-<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="UTF-8"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
 	<link rel="stylesheet" href="styles.min.css" type="text/css"/>
-	<title>Registro libro</title>
+	<title>Editoriales</title>
 </head>
 <body>
-
 <div class="app">
 	<div class="app-body">
 		<div class="app-sidebar sidebar-dark sidebar-slide-left">
@@ -36,69 +34,51 @@
     			</div>
  	 	</div>
 
+
 		<div class="app-content">
 			<nav aria-label="breadcrumb">
 			    <ol class="breadcrumb">
-			      <li class="breadcrumb-item">Libro</li>
-			      <li class="breadcrumb-item active" aria-current="page">Registrar Libro</li>
+			      <li class="breadcrumb-item">Editorial</li>
+			      <li class="breadcrumb-item active" aria-current="page">Catálogo de Editoriales</li>
 			    </ol>
 			</nav>
-			<form method="post" action="/registroLibroCompletado">
-				<div class="form-group col-lg-5">
-					<label>Título</label>
-					<input type="text" class="form-control" placeholder="Título" name="titulo"/>
-				</div>	
-				
-				<div class="form-group col-lg-5">
-					<label>Autores</label>
-					<input type="text" class="form-control" placeholder="Autores" name="autores"/>
-				</div>	
-				
-				<div class="form-group col-lg-5">
-					<label>Categoría</label>
-					<input type="text" class="form-control" placeholder="Categoría" name="categoria"/>
-				</div>
-				
-				<div class="form-group col-lg-5">
-					<div class="form-inline"> 
-						<label>Editorial</label>
-						<a href="/registrarEditorial.html" class="alert-link" id="nuevaEditorial">Registrar nueva editorial</a>
-					</div>
-					<select class="form-control" name="nombre"> 
-						<option th:each="editorial : ${totalEditoriales}"
-								th:value="${editorial.nombre}" th:text="${editorial.nombre}">
-						</option>
-					</select> 
-				</div>
-				
-				<div class="form-group col-lg-5">
-					<label>Número de páginas</label>
-					<input type="number" class="form-control" name="nPaginas"/>
-					<small class="form-text text-muted">Introduzca un número positivo</small>
-				</div>
-				
-				<div class="form-group col-lg-5">
-					<label>Precio</label>
-					<input type="number" step="0.01" min="0" class="form-control" placeholder="Precio" name="pvp"/>
-					<small class="form-text text-muted">Introduzca un número positivo</small>
-				</div>
-				
-				<div class="form-group col-lg-5">
-					<label>Año de publicación</label>
-					<input type="number" min="-15000" max="2018" class="form-control"  placeholder="Año de publicación" name="anyoPublicacion"/>
-				</div>
-				
-				<input type="submit" class="btn btn-dark" value="Registrar"/>
+			<form method="post" action="/ordenarEditoriales">
+				<select name="criterio">
+					<option value="nombre">Nombre</option>
+					<option value="email">E-mail</option>
+					<option value="telefono">Telefono</option>
+					<option value="cPostal">Cod. Postal</option>
+					<option value="nif">NIF</option>
+				</select>
+				<input type="submit" value="Ordenar"/>
 			</form>
+			<form method="post" action="/consultaEditorial">
+				<select name="criterio" >
+					<option value="nombre">Nombre</option>
+					<option value="email">E-mail</option>
+					<option value="telefono">Telefono</option>
+					<option value="cPostal">Cod. Postal</option>
+					<option value="nif">NIF</option>
+				</select>
+				<input type="text" name="filtro" />
+				<input type="submit" value="Enviar"/>
+			</form>
+			
+			<div class="editoriales">
+				<p th:each="editorial : ${totalEditoriales}">
+					<a th:text="${editorial.nombre}"></a> 
+					<a th:href="@{/irAContenidoEditorial(idEditorial=${editorial.idEditorial})}"> Ver</a>
+					<a th:href="@{/irAModificarEditorial(idEditorial=${editorial.idEditorial})}"> Modificar</a>
+				</p>
+			</div>
+
 		</div>			
 	</div>
 </div>
-
  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-
 
 
 </body>

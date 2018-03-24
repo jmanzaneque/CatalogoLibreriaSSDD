@@ -34,6 +34,12 @@ public class LibroController {
 		return "catalogo";
 	}
 	
+	@RequestMapping("/mostrarLibros")
+	public String mostrarLibros(Model model) {
+		model.addAttribute("totalLibros", repLibro.findAll());
+		return "mostrarLibros";
+	}
+	
 
 	@RequestMapping(value="/registroLibroCompletado")
 	public String registroLibro(@RequestParam String nombre, Libro libro, Model model) {

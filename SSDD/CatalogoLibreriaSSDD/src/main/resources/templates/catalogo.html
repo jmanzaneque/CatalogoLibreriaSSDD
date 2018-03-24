@@ -2,117 +2,83 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
-	<link rel="stylesheet" href="Styles.css" type="text/css"/>
+	<link rel="stylesheet" href="styles.min.css" type="text/css"/>
 </head>
 <body>
-
-	<div class="app-sidebar sidebar-dark sidebar-slide-left">
-  	<div id="sidebar-nav" class="sidebar-nav" data-children=".sidebar-nav-group">
-    		<a href="/" class="sidebar-nav-link">
-     		 <i class="icon-rocket"></i> Catálogo
-   		</a>
-    <div class="sidebar-nav-group">
-      <a href="#components" class="sidebar-nav-link collapsed" data-toggle="collapse" data-parent="#sidebar-nav">
-        <i class="icon-puzzle"></i> Libros
-      </a>
-      <div id="components" class="sidebar-nav-group collapse">
-        <a href="./nuevoLibro" class="sidebar-nav-link">Registrar nuevo libro</a><br/>
-        <a href="/" class="sidebar-nav-link">Libros</a><br/>
-        <a href="/" class="sidebar-nav-link">Búsqueda de libros</a><br/>
-
-      </div>
-    </div>
-    <div class="sidebar-nav-group">
-      <a href="#content" class="sidebar-nav-link collapsed" data-toggle="collapse" data-parent="#sidebar-nav">
-        <i class="icon-folder"></i> Editoriales
-      </a>
-      <div id="content" class="sidebar-nav-group collapse">
-        <a href="./registrarEditorial.html" class="sidebar-nav-link">Registrar nueva editorial</a><br/>
-        <a href="./pages/content/timeline.html" class="sidebar-nav-link">Editoriales</a><br/>
-        <a href="./pages/content/timeline.html" class="sidebar-nav-link">Búsqueda de editoriales</a><br/>
-      </div>
-    </div>
-
-    </div>
-
-  </div>
-
-
-<div class="app-content">	
-	<!-- Consulta de editoriales -->
-	<p>Consulta de editoriales</p>
-	<form method="post" action="/consultaEditorial">
-		<select name="criterio" >
-			<option value="nombre">Nombre</option>
-			<option value="email">E-mail</option>
-			<option value="telefono">Telefono</option>
-			<option value="cPostal">Cod. Postal</option>
-			<option value="nif">NIF</option>
-		</select>
-		<input type="text" name="filtro" />
-		<input type="submit" value="Enviar"/>
-	</form>
+<div class="app">
+	<div class="app-body">
 	
-	<!-- Consulta de libros -->
-	<p>Consulta de libros</p>
-	<form method="post" action="/consultaLibro">
-		<select name="criterio" >
-			<option value="autores">Autores</option>
-			<option value="titulo">Título</option>
-			<option value="categoria">Categoria</option>
-			<option value="nPaginas">Nº Páginas</option>
-			<option value="pvp">PVP</option>
-			<option value="anyoPublicacion">Año de publicacion</option>
-		</select>
-		<input type="text" name="filtro" />
-		<input type="submit" value="Enviar"/>
-	</form>
+		<div class="app-sidebar sidebar-dark sidebar-slide-left">
+  			<div id="sidebar-nav" class="sidebar-nav" data-children=".sidebar-nav-group">
+    				<a href="/" class="sidebar-nav-link">
+     		 		<i class="icon-rocket"></i> Inicio
+   				</a>
+    				<div class="sidebar-nav-group">
+     				<a href="#components" class="sidebar-nav-link collapsed" data-toggle="collapse" data-parent="#sidebar-nav">
+        					<i class="icon-puzzle"></i> Libros
+     				</a>
+		     		<div id="components" class="sidebar-nav-group collapse">
+				        <a href="./mostrarLibros" class="sidebar-nav-link">Catálogo de Libros</a><br/>
+				        <a href="./nuevoLibro" class="sidebar-nav-link">Registrar nuevo libro</a><br/>
+		      		</div>
+    				</div>
+			    <div class="sidebar-nav-group">
+			      <a href="#content" class="sidebar-nav-link collapsed" data-toggle="collapse" data-parent="#sidebar-nav">
+			        <i class="icon-folder"></i> Editoriales
+			      </a>
+			      <div id="content" class="sidebar-nav-group collapse">
+			        <a href="./mostrarEditoriales" class="sidebar-nav-link">Catálogo de Editoriales</a><br/>
+			        <a href="./registrarEditorial.html" class="sidebar-nav-link">Registrar nueva editorial</a><br/>
+			      </div>
+			    </div>
+
+    			</div>
+ 	 	</div>
+
+
+		<div class="app-content">
+			<nav aria-label="breadcrumb">
+			    <ol class="breadcrumb">
+			      <li class="breadcrumb-item">Inicio</li>
+			    </ol>
+			</nav>
+			<!-- Consulta de editoriales -->
+			<p>Consulta de editoriales</p>
+			<form method="post" action="/consultaEditorial">
+				<select name="criterio" >
+					<option value="nombre">Nombre</option>
+					<option value="email">E-mail</option>
+					<option value="telefono">Telefono</option>
+					<option value="cPostal">Cod. Postal</option>
+					<option value="nif">NIF</option>
+				</select>
+				<input type="text" name="filtro" />
+				<input type="submit" value="Enviar"/>
+			</form>
 		
-	<!-- Ordenar editoriales -->
-	<p>Ordenar editoriales por:</p>
-	<form method="post" action="/ordenarEditoriales">
-		<select name="criterio">
-			<option value="nombre">Nombre</option>
-			<option value="email">E-mail</option>
-			<option value="telefono">Telefono</option>
-			<option value="cPostal">Cod. Postal</option>
-			<option value="nif">NIF</option>
-		</select>
-		<input type="submit" value="Ordenar"/>
-	</form>
-	
-	<!-- Ordenar Libros -->
-	<p>Ordenar Libros por:</p>
-	<form method="post" action="/ordenarLibros">
-		<select name="criterio">
-			<option value="autores">Autores</option>
-			<option value="titulo">Título</option>
-			<option value="categoria">Categoria</option>
-			<option value="nPaginas">Nº Páginas</option>
-			<option value="pvp">PVP</option>
-			<option value="anyoPublicacion">Año de publicacion</option>
-		</select>
-		<input type="submit" value="Ordenar"/>
-	</form>
-	
-	<!-- Listado de editoriales -->
-	<h2>Editoriales</h2>
-	<p th:each="editorial : ${totalEditoriales}">
-	<a th:text="${editorial.nombre}"></a> 
-	<a th:href="@{/irAContenidoEditorial(idEditorial=${editorial.idEditorial})}"> Ver</a>
-	<a th:href="@{/irAModificarEditorial(idEditorial=${editorial.idEditorial})}"> Modificar</a>
-	</p>
-	
-	<!-- Listado de libros -->
-	<h2>Libros</h2>
-	<p th:each="libro : ${totalLibros}">
-	<a th:text="${libro.titulo}"></a> 
-	<a th:href="@{/irAContenidoLibro(id=${libro.id})}"> Ver</a>
-	<a th:href="@{/irAModificarLibro(id=${libro.id})}"> Modificar</a>
-	</p>
-	
+			<!-- Consulta de libros -->
+			<p>Consulta de libros</p>
+			<form method="post" action="/consultaLibro">
+				<select name="criterio" >
+					<option value="autores">Autores</option>
+					<option value="titulo">Título</option>
+					<option value="categoria">Categoria</option>
+					<option value="nPaginas">Nº Páginas</option>
+					<option value="pvp">PVP</option>
+					<option value="anyoPublicacion">Año de publicacion</option>
+				</select>
+				<input type="text" name="filtro" />
+				<input type="submit" value="Enviar"/>
+			</form>
+			
+		
+
+		</div>
 	</div>
- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+</div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>

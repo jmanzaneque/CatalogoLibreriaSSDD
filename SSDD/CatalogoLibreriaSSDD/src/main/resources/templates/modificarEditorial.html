@@ -2,49 +2,93 @@
 <head>
 	<meta charset="UTF-8"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
-	<link rel="stylesheet" href="Styles.css" type="text/css"/>
+	<link rel="stylesheet" href="styles.min.css" type="text/css"/>
 	<title>Modificar editorial</title>
 </head>
 <body>
-<div id="cabecera">
-	<h1> Modificar editorial</h1>
-</div>
-
-<div class="container" id="formulario">
-<form method="post" action="/modificarEditorialCompletado">
-	<input type="hidden" name="idEditorial" th:value="${editorial.idEditorial}"/>
+<div class="app">
+	<div class="app-body">
 	
-	<div class="form-group col-lg-5">
-		<label>Nombre</label>
-		<input type="text" class="form-control" name="nombre" th:field="${editorial.nombre}" />
+		<div class="app-sidebar sidebar-dark sidebar-slide-left">
+  			<div id="sidebar-nav" class="sidebar-nav" data-children=".sidebar-nav-group">
+    				<a href="/" class="sidebar-nav-link">
+     		 		<i class="icon-rocket"></i> Inicio
+   				</a>
+    				<div class="sidebar-nav-group">
+     				<a href="#components" class="sidebar-nav-link collapsed" data-toggle="collapse" data-parent="#sidebar-nav">
+        					<i class="icon-puzzle"></i> Libros
+     				</a>
+		     		<div id="components" class="sidebar-nav-group collapse">
+				        <a href="./mostrarLibros" class="sidebar-nav-link">Catálogo de Libros</a><br/>
+				        <a href="./nuevoLibro" class="sidebar-nav-link">Registrar nuevo libro</a><br/>
+		      		</div>
+    				</div>
+			    <div class="sidebar-nav-group">
+			      <a href="#content" class="sidebar-nav-link collapsed" data-toggle="collapse" data-parent="#sidebar-nav">
+			        <i class="icon-folder"></i> Editoriales
+			      </a>
+			      <div id="content" class="sidebar-nav-group collapse">
+			        <a href="./mostrarEditoriales" class="sidebar-nav-link">Catálogo de Editoriales</a><br/>
+			        <a href="./registrarEditorial.html" class="sidebar-nav-link">Registrar nueva editorial</a><br/>
+			      </div>
+			    </div>
+
+    			</div>
+ 	 	</div>
+
+
+		<div class="app-content">
+			<nav aria-label="breadcrumb">
+			    <ol class="breadcrumb">
+			      <li class="breadcrumb-item">Editorial</li>
+			      <li class="breadcrumb-item active" aria-current="page">Catálogo de Editoriales</li>
+			      <li class="breadcrumb-item active" aria-current="page">Modificar Editorial</li>
+			    </ol>
+			</nav>
+			
+			<div class="container" id="formulario">
+				<form method="post" action="/modificarEditorialCompletado">
+					<input type="hidden" name="idEditorial" th:value="${editorial.idEditorial}"/>
+					
+					<div class="form-group col-lg-5">
+						<label>Nombre</label>
+						<input type="text" class="form-control" name="nombre" th:field="${editorial.nombre}" />
+					</div>
+					<div class="form-group col-lg-5">
+						<label>NIF</label>
+						<input type="number" class="form-control" name="nif" th:field="${editorial.nif}" />
+					</div>
+					<div class="form-group col-lg-5">
+						<label>Teléfono</label>
+						<input type="tel" pattern="^[9|7|6]\d{8}$" class="form-control" name="telefono" th:field="${editorial.telefono}" />
+						<small class="form-text text-muted">Introduzca 9 dígitos</small>
+					</div>
+					<div class="form-group col-lg-5">
+						<label>e-mail</label>
+						<input type="email" class="form-control" name="email" th:field="${editorial.email}" />
+						<small class="form-text text-muted">Ejemplo: usuario@example.com</small>
+					</div>
+					<div class="form-group col-lg-5">
+						<label>Código postal</label>
+						<input type="number" class="form-control" name="cPostal" th:field="${editorial.cPostal}" />
+						<small class="form-text text-muted">Ejemplo: 28080</small>
+					</div>
+					<input type="submit" class="btn btn-dark" value="Modificar"/>
+				</form>
+			</div>
+		</div>
 	</div>
-	<div class="form-group col-lg-5">
-		<label>NIF</label>
-		<input type="number" class="form-control" name="nif" th:field="${editorial.nif}" />
-	</div>
-	<div class="form-group col-lg-5">
-		<label>Teléfono</label>
-		<input type="tel" pattern="^[9|7|6]\d{8}$" class="form-control" name="telefono" th:field="${editorial.telefono}" />
-		<small class="form-text text-muted">Introduzca 9 dígitos</small>
-	</div>
-	<div class="form-group col-lg-5">
-		<label>e-mail</label>
-		<input type="email" class="form-control" name="email" th:field="${editorial.email}" />
-		<small class="form-text text-muted">Ejemplo: usuario@example.com</small>
-	</div>
-	<div class="form-group col-lg-5">
-		<label>Código postal</label>
-		<input type="number" class="form-control" name="cPostal" th:field="${editorial.cPostal}" />
-		<small class="form-text text-muted">Ejemplo: 28080</small>
-	</div>
-	<input type="submit" class="btn btn-dark" value="Modificar"/>
-</form>
+
 </div>
 
-<div class="alert alert-primary" id="backToMenu">
-	<a href="/" class="alert-link" >Volver al catálogo</a>
-</div>
-
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+	
+	
+	
+	
 </body>
 </html>
 

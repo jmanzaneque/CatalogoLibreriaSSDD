@@ -1,0 +1,152 @@
+#formulario{
+	margin-top: 10px;
+	margin-left: 5px;
+	padding-bottom: 15px;
+	margin-bottom: 10px;
+	
+}
+
+#listadoLibros{
+	margin-left: 30px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width:50%;
+}
+
+#cabecera{
+	margin-top: 0.5em;
+	margin-left: 30px;
+}
+
+#backToMenu{
+	width:100%;
+	margin-bottom: 0%;
+	margin-right: 0%;
+	
+}
+
+#nuevaEditorial{
+	margin-left: 15px; 
+}
+
+#linkTabulado{
+	margin-left: 15px;
+}
+
+#info{
+	margin-left: 25px;
+	margin-right: 25%;
+	width: 80%;
+}
+
+#boton{
+	margin-left: 15px;
+}
+
+#mainNav{
+	height: 12px;
+}
+.navbar {
+	background-color: white;
+}
+
+#inWhite {
+	color:white;
+	margin-top: 0.5em;
+	margin-left: 15px;
+}
+
+body{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1rem;
+	margin: 0;
+	font-weight: 400;
+	line-height: 1.5;
+	text-align: left;
+}
+
+html,body{
+	background: #f8f9fa;
+	width:100%;
+	height:100%;
+}
+
+.app {
+	position: relative;
+	width: 100%;
+}
+
+
+.app-content {
+	position: relative;
+	overflow: auto;
+}
+
+
+.app .app-body .app-sidebar.sidebar-dark{
+	background: #34495e;
+	
+}
+
+.app .app-body .app-sidebar{
+	background: #fff;
+	float: left;
+	font-size: 0.95rem;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	padding: .95rem 0;
+	position: relative;
+	width: 15rem;
+}
+.app-sidebar.sidebar-dark.sidebar-slide-left {
+    float: left;
+    font-size: 0.95rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: .95rem 0;
+    position: relative;
+    width: 15rem;
+}
+.app, .app-sidebar, .app-content{
+	height: 100%;
+}
+
+.app-body{
+	height: 100%;
+    width: 100%
+}
+
+.app-sidebar .sidebar-nav{
+	overflow: hidden;
+	padding: 0;
+	
+}
+
+.app .app-body .app-sidebar.sidebar-dark .sidebar-nav > .sidebar-nav-link, .app .app-body .app-sidebar.sidebar-dark .sidebar-nav > .sidebar-nav-group > .sidebar-nav-link{
+	color: #dae2ea;
+}
+
+.app-sidebar .sidebar-nav > .sidebar-nav-link, .app-sidebar .sidebar-nav > .sidebar-nav-group > .sidebar-nav-link {
+	border: none;
+	font-weight: 400;
+	padding: .95rem 1.5rem;
+	white-space: nowrap;
+	transition: background-color 0.25s ease-out;
+}	
+
+#content , #components{
+    padding-left: 15%;
+    background: #2a3c4e;
+}
+
+a {
+    color: #dde0e4e6;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+.libros, .editoriales{
+	padding-left: 2%
+}
+

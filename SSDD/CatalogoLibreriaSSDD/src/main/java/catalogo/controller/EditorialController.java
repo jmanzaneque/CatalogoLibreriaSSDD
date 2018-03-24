@@ -34,7 +34,12 @@ public class EditorialController {
 		model.addAttribute("repEditoriales", repEditorial);
 		return "editorialRegistrada";
 	}
-	
+	@RequestMapping("/mostrarEditoriales")
+	public String mostrarEditoriales(Model model) {
+
+		model.addAttribute("totalEditoriales",repEditorial.findAll());
+		return "mostrarEditoriales";
+	}
 	@RequestMapping(value="/irAContenidoEditorial")
 	public String mostrarEditorial (@RequestParam long idEditorial, Model model) {
 		
