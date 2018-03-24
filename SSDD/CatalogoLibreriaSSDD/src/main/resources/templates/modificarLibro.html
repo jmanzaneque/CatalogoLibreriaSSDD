@@ -15,21 +15,21 @@
      		 		<i class="icon-rocket"></i> Inicio
    				</a>
     				<div class="sidebar-nav-group">
-     				<a href="#components" class="sidebar-nav-link collapsed" data-toggle="collapse" data-parent="#sidebar-nav">
+     				<a href="#components" class="sidebar-nav-link collapsed" data-toggle="collapse" data-parent="#sidebar-nav" id="filaMenu">
         					<i class="icon-puzzle"></i> Libros
      				</a>
 		     		<div id="components" class="sidebar-nav-group collapse">
-				        <a href="./mostrarLibros" class="sidebar-nav-link">Catálogo de Libros</a><br/>
-				        <a href="./nuevoLibro" class="sidebar-nav-link">Registrar nuevo libro</a><br/>
+				        <a href="./mostrarLibros" class="sidebar-nav-link" id="subfilaMenu">Catálogo de Libros</a><br/>
+				        <a href="./nuevoLibro" class="sidebar-nav-link" id="subfilaMenu">Registrar nuevo libro</a><br/>
 		      		</div>
     				</div>
 			    <div class="sidebar-nav-group">
-			      <a href="#content" class="sidebar-nav-link collapsed" data-toggle="collapse" data-parent="#sidebar-nav">
+			      <a href="#content" class="sidebar-nav-link collapsed" data-toggle="collapse" data-parent="#sidebar-nav" >
 			        <i class="icon-folder"></i> Editoriales
 			      </a>
 			      <div id="content" class="sidebar-nav-group collapse">
-			        <a href="./mostrarEditoriales" class="sidebar-nav-link">Catálogo de Editoriales</a><br/>
-			        <a href="./registrarEditorial.html" class="sidebar-nav-link">Registrar nueva editorial</a><br/>
+			        <a href="./mostrarEditoriales" class="sidebar-nav-link" id="subfilaMenu">Catálogo de Editoriales</a><br/>
+			        <a href="./registrarEditorial.html" class="sidebar-nav-link" id="subfilaMenu">Registrar nueva editorial</a><br/>
 			      </div>
 			    </div>
 
@@ -75,7 +75,7 @@
 					
 					<div class="form-group col-lg-5">
 						<label>Número de páginas</label>
-						<input type="number" class="form-control" name="nPaginas" th:field="${libro.nPaginas}" />
+						<input type="number" class="form-control" name="nPaginas" min="0" th:field="${libro.nPaginas}" />
 						<small class="form-text text-muted">Introduzca un número positivo</small>
 					</div>
 					

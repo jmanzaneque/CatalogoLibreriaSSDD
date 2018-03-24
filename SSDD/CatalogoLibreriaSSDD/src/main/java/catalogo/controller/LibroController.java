@@ -210,9 +210,9 @@ public class LibroController {
 	
 	@PostConstruct
 	public void init() {
-		Editorial plaza = new Editorial("Plaza",622754789,"plaza@plaza.es",45200,527896235);
+		Editorial plaza = new Editorial("Plaza",622754789,"plaza@plaza.es",45200,"B27896235");
 		repEditorial.save(plaza);
-		Editorial castro = new Editorial("Castro",62802348,"castroSm@castro.es",45210,582832265);
+		Editorial castro = new Editorial("Castro",62802348,"castroSm@castro.es",45210,"58283226A");
 		repEditorial.save(castro);
 		repLibro.save(new Libro("Paco León", "En busca del arca", "Aventura",122, 33, 2007, plaza));
 		repLibro.save(new Libro("Marco Galán", "Sueños rotos", "Aventura",155, 32, 2004, castro));

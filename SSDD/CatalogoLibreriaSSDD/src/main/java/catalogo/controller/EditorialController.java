@@ -26,7 +26,7 @@ public class EditorialController {
 			@RequestParam(value="telefono") long telefono,
 			@RequestParam(value="email") String email,
 			@RequestParam(value="cPostal") long cPostal,
-			@RequestParam(value="nif") long nif,
+			@RequestParam(value="nif") String nif,
 			Model model) {
 		
 		Editorial newEditorial = new Editorial(nombre, telefono, email, cPostal, nif);
@@ -102,7 +102,7 @@ public class EditorialController {
 		@RequestParam(value="telefono") long telefono,
 		@RequestParam(value="email") String email,
 		@RequestParam(value="cPostal") long cPostal,
-		@RequestParam(value="nif") long nif) {
+		@RequestParam(value="nif") String nif) {
 		
 		Editorial editorial = repEditorial.getOne(idEditorial);
 
@@ -181,9 +181,9 @@ public class EditorialController {
 	
 	@PostConstruct
 	public void init() {
-		repEditorial.save(new Editorial("Anaya",628015678,"anaya@anaya.es",45200,527897865));
-		repEditorial.save(new Editorial("SM",628015655,"editorialSm@Sm.es",45200,582827675));
-		repEditorial.save(new Editorial("Rubio",11112655,"rubioEditorial@rubio.es",45210,3333333));
+		repEditorial.save(new Editorial("Anaya",628015678,"anaya@anaya.es",45200,"B27897865"));
+		repEditorial.save(new Editorial("SM",628015655,"editorialSm@Sm.es",45200,"58282767X"));
+		repEditorial.save(new Editorial("Rubio",11112655,"rubioEditorial@rubio.es",45210,"A45333333"));
 	}
 	
 

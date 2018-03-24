@@ -15,21 +15,21 @@
      		 		<i class="icon-rocket"></i> Inicio
    				</a>
     				<div class="sidebar-nav-group">
-     				<a href="#components" class="sidebar-nav-link collapsed" data-toggle="collapse" data-parent="#sidebar-nav">
+     				<a href="#components" class="sidebar-nav-link collapsed" data-toggle="collapse" data-parent="#sidebar-nav" id="filaMenu">
         					<i class="icon-puzzle"></i> Libros
      				</a>
 		     		<div id="components" class="sidebar-nav-group collapse">
-				        <a href="./mostrarLibros" class="sidebar-nav-link">Catálogo de Libros</a><br/>
-				        <a href="./nuevoLibro" class="sidebar-nav-link">Registrar nuevo libro</a><br/>
+				        <a href="./mostrarLibros" class="sidebar-nav-link" id="subfilaMenu">Catálogo de Libros</a><br/>
+				        <a href="./nuevoLibro" class="sidebar-nav-link" id="subfilaMenu">Registrar nuevo libro</a><br/>
 		      		</div>
     				</div>
 			    <div class="sidebar-nav-group">
-			      <a href="#content" class="sidebar-nav-link collapsed" data-toggle="collapse" data-parent="#sidebar-nav">
+			      <a href="#content" class="sidebar-nav-link collapsed" data-toggle="collapse" data-parent="#sidebar-nav" >
 			        <i class="icon-folder"></i> Editoriales
 			      </a>
 			      <div id="content" class="sidebar-nav-group collapse">
-			        <a href="./mostrarEditoriales" class="sidebar-nav-link">Catálogo de Editoriales</a><br/>
-			        <a href="./registrarEditorial.html" class="sidebar-nav-link">Registrar nueva editorial</a><br/>
+			        <a href="./mostrarEditoriales" class="sidebar-nav-link" id="subfilaMenu">Catálogo de Editoriales</a><br/>
+			        <a href="./registrarEditorial.html" class="sidebar-nav-link" id="subfilaMenu">Registrar nueva editorial</a><br/>
 			      </div>
 			    </div>
 
@@ -56,7 +56,8 @@
 					</div>
 					<div class="form-group col-lg-5">
 						<label>NIF</label>
-						<input type="number" class="form-control" name="nif" th:field="${editorial.nif}" />
+						<input type="text" class="form-control" maxlength="9" name="nif" th:field="${editorial.nif}" />
+						<small class="form-text text-muted">Introduzca 9 caracteres</small>
 					</div>
 					<div class="form-group col-lg-5">
 						<label>Teléfono</label>
@@ -70,7 +71,7 @@
 					</div>
 					<div class="form-group col-lg-5">
 						<label>Código postal</label>
-						<input type="number" class="form-control" name="cPostal" th:field="${editorial.cPostal}" />
+						<input type="number" class="form-control" min="0" max="100000" name="cPostal" th:field="${editorial.cPostal}" />
 						<small class="form-text text-muted">Ejemplo: 28080</small>
 					</div>
 					<input type="submit" class="btn btn-dark" value="Modificar"/>

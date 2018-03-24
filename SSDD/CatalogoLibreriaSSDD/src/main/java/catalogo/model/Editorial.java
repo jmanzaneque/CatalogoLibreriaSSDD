@@ -17,8 +17,8 @@ public class Editorial {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long idEditorial;
 	
-	private String nombre, email;
-	private long telefono, cPostal, nif;
+	private String nombre, email, nif;
+	private long telefono, cPostal;
 	
 	@OneToMany(mappedBy = "editorial")
 	private List<Libro> libros;
@@ -33,7 +33,7 @@ public class Editorial {
 		
 	}
 	
-	public Editorial (String nombre, long telefono, String email, long cPostal, long nif) {
+	public Editorial (String nombre, long telefono, String email, long cPostal, String nif) {
 		this.nombre = nombre;
 		this.telefono = telefono;
 		this.email = email;
@@ -58,10 +58,10 @@ public class Editorial {
 		this.idEditorial = idEditorial;
 	}
 
-	public long getNif() {
+	public String getNif() {
 		return nif;
 	}
-	public void setNif(long nif) {
+	public void setNif(String nif) {
 		this.nif = nif;
 	}
 	public String getNombre() {
