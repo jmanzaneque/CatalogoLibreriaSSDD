@@ -43,37 +43,66 @@
 			      <li class="breadcrumb-item active" aria-current="page">Catálogo de Editoriales</li>
 			    </ol>
 			</nav>
-			<form method="post" action="/ordenarEditoriales">
-				<select name="criterio">
-					<option value="nombre">Nombre</option>
-					<option value="email">E-mail</option>
-					<option value="telefono">Telefono</option>
-					<option value="cPostal">Cod. Postal</option>
-					<option value="nif">NIF</option>
-				</select>
-				<select name="orden">
-						<option value="Ascendente">Ascendente</option>
-						<option value="Descendente">Descendente</option>
-				</select>
-				<input type="submit" value="Ordenar"/>
-			</form>
-			<form method="post" action="/consultaEditorial">
-				<select name="criterio" >
-					<option value="nombre">Nombre</option>
-					<option value="email">E-mail</option>
-					<option value="telefono">Telefono</option>
-					<option value="cPostal">Cod. Postal</option>
-					<option value="nif">NIF</option>
-				</select>
-				<input type="text" name="filtro" />
-				<input type="submit" value="Enviar"/>
-			</form>
+				
+				<h4>Ordenar editoriales</h4>
+				<nav class="navbar navbar-light bg-light">
+					<form class="form-inline my-2 my-lg-0" method="post" action="/ordenarEditoriales">
+						<div class="row">
+							<div class="col-md-4 col-md-offset-1">
+								<select class="form-control" name="criterio">
+									<option value="nombre">Nombre</option>
+									<option value="email">E-mail</option>
+									<option value="telefono">Telefono</option>
+									<option value="cPostal">Cod. Postal</option>
+									<option value="nif">NIF</option>
+								</select>
+							</div>
+							
+							<div class="col-md-4">
+								<select class="form-control" name="orden">
+										<option value="Ascendente">Ascendente</option>
+										<option value="Descendente">Descendente</option>
+								</select>
+							</div>
+							
+							<div class="col-md-3">
+								<input class="btn btn-outline-success my-2 my-sm-0" id="buttonSubmit2" type="submit" value="Ordenar"/>
+							</div>
+						</div>
+					</form>
+				</nav>
 			
+			
+			<h4>Consulta editoriales</h4>
+			<nav class="navbar navbar-light bg-light">
+				<form class="form-inline my-2 my-lg-0" method="post" action="/consultaEditorial">
+				<div class="row">
+					<div class="col-md-4 col-md-offset-1">
+						<select class="form-control" name="criterio" >
+							<option value="nombre">Nombre</option>
+							<option value="email">E-mail</option>
+							<option value="telefono">Telefono</option>
+							<option value="cPostal">Cod. Postal</option>
+							<option value="nif">NIF</option>
+						</select>
+					</div>
+					<div class="col-md-4">
+						<input class="form-control" type="text" name="filtro" />
+					</div>
+					<div class="col-md-3">
+						<input class="btn btn-outline-success my-2 my-sm-0" type="submit" id="buttonSubmit" value="Enviar"/>
+					</div>
+				</div>
+				</form>
+			</nav>
+			<br/>
+			
+			<h4>Listado de editoriales</h4>
 			<div class="editoriales">
-				<p th:each="editorial : ${totalEditoriales}">
+				<p th:each="editorial : ${totalEditoriales}"> - 
 					<a th:text="${editorial.nombre}"></a> 
-					<a th:href="@{/irAContenidoEditorial(idEditorial=${editorial.idEditorial})}"> Ver</a>
-					<a th:href="@{/irAModificarEditorial(idEditorial=${editorial.idEditorial})}"> Modificar</a>
+					<a th:href="@{/irAContenidoEditorial(idEditorial=${editorial.idEditorial})}" id="linkTo"> Ver</a>
+					<a th:href="@{/irAModificarEditorial(idEditorial=${editorial.idEditorial})}" id="linkTo"> Modificar</a>
 				</p>
 			</div>
 

@@ -42,43 +42,67 @@
 			      <li class="breadcrumb-item active" aria-current="page">Catálogo de libros</li>
 			    </ol>
 			</nav>
-			<div class="ordenarLibros">
-				<form method="post" action="/ordenarLibros">
-					<select name="criterio">
-						<option value="autores">Autores</option>
-						<option value="titulo">Título</option>
-						<option value="categoria">Categoria</option>
-						<option value="nPaginas">Nº Páginas</option>
-						<option value="pvp">PVP</option>
-						<option value="anyoPublicacion">Año de publicación</option>
-					</select>
-					<select name="orden">
-						<option value="Ascendente">Ascendente</option>
-						<option value="Descendente">Descendente</option>
-					</select>
-					
-					<input type="submit" value="Ordenar"/>
+			
+			<h4>Ordenar libros</h4>
+			<nav class="navbar navbar-light bg-light">
+				<form class="form-inline my-2 my-lg-0" method="post" action="/ordenarLibros">
+				<div class="row">
+					<div class="col-md-4 col-md-offset-1">	
+						<select class="form-control" name="criterio">
+							<option value="autores">Autores</option>
+							<option value="titulo">Título</option>
+							<option value="categoria">Categoria</option>
+							<option value="nPaginas">Nº Páginas</option>
+							<option value="pvp">PVP</option>
+							<option value="anyoPublicacion">Año de publicación</option>
+						</select>
+					</div>
+						<div class="col-md-4 col-md-offset-1">
+							<select class="form-control" name="orden">
+								<option value="Ascendente">Ascendente</option>
+								<option value="Descendente">Descendente</option>
+							</select>
+						</div>
+						
+						<div class="col-md-3">
+							<input class="btn btn-outline-success my-2 my-sm-0" type="submit" id="buttonSubmit2" value="Ordenar"/>
+						</div>
+				</div>
 				</form>
-			</div>
-			<div class="consultarLibros">
-				<form method="post" action="/consultaLibro">
-					<select name="criterio" >
-						<option value="autores">Autores</option>
-						<option value="titulo">Título</option>
-						<option value="categoria">Categoria</option>
-						<option value="nPaginas">Nº Páginas</option>
-						<option value="pvp">PVP</option>
-						<option value="anyoPublicacion">Año de publicación</option>
-					</select>
-					<input type="text" name="filtro" />
-					<input type="submit" value="Enviar"/>
+			</nav>
+			
+			<h4>Consulta libros</h4>
+			<nav class="navbar navbar-light bg-light">
+				<form class="form-inline my-2 my-lg-0" method="post" action="/consultaLibro">
+				<div class="row">
+					<div class="col-md-4 col-md-offset-1">
+						<select class="form-control" name="criterio" >
+							<option value="autores">Autores</option>
+							<option value="titulo">Título</option>
+							<option value="categoria">Categoria</option>
+							<option value="nPaginas">Nº Páginas</option>
+							<option value="pvp">PVP</option>
+							<option value="anyoPublicacion">Año de publicación</option>
+						</select>
+					</div>
+					<div class="col-md-4 col-md-offset-1">
+						<input class="form-control" type="text" name="filtro" />
+					</div>
+					<div class="col-md-3">
+						<input class="btn btn-outline-success my-2 my-sm-0" type="submit" id="buttonSubmit" value="Enviar"/>
+					</div>
+				</div>
 				</form>
-			</div>
+			</nav>
+			
+			<br/>
+			
+			<h4>Listado de libros</h4>
 			<div class="libros">
-				<p th:each="libro : ${totalLibros}">
+				<p th:each="libro : ${totalLibros}"> - 
 					<a th:text="${libro.titulo}"></a> 
-					<a th:href="@{/irAContenidoLibro(id=${libro.id})}"> Ver</a>
-					<a th:href="@{/irAModificarLibro(id=${libro.id})}"> Modificar</a>
+					<a th:href="@{/irAContenidoLibro(id=${libro.id})}" id="linkTo">	Ver</a>
+					<a th:href="@{/irAModificarLibro(id=${libro.id})}" id="linkTo"> Modificar</a>
 				</p>
 			</div>
 

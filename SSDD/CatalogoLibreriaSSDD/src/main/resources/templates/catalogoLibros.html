@@ -46,7 +46,7 @@
 			<div class="libros">
 				<p th:each="libro : ${resultadoConsulta}">
 					<a th:text="${libro.titulo}"></a>
-					<a th:href="@{/irAContenidoLibro(id=${libro.id})}"> Ver</a>
+					<a th:href="@{/irAContenidoLibro(id=${libro.id})}" > Ver</a>
 				</p>
 			</div>
 

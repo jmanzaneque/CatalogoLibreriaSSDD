@@ -66,12 +66,15 @@
 						</tr>
 					</tbody>
 				</table>
+				
+				<h4>Listado de libros</h4>
 				<div class="container border border-secondary" id="listadoLibros">
 					<p th:each="libro : ${editorial.libros}">
 						<div class="inline">
+						- 
 							<a th:text="${libro.titulo}"></a> 
-							<a class="alert-link" id="linkTabulado" th:href="@{/irAContenidoLibro(id=${libro.id})}">Ver</a>
-							<a class="alert-link" id="linkTabulado" th:href="@{/irAModificarLibro(id=${libro.id})}">Modificar</a>
+							<a id="linkTo" th:href="@{/irAContenidoLibro(id=${libro.id})}">Ver</a>
+							<a id="linkTo" th:href="@{/irAModificarLibro(id=${libro.id})}">Modificar</a>
 						</div>
 					</p>
 				</div>
