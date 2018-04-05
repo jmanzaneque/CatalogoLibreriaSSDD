@@ -44,9 +44,10 @@
 			    </ol>
 			</nav>
 			<div class="libros">
-				<p th:each="libro : ${resultadoConsulta}">
+				<p th:each="libro : ${resultadoConsulta}"> -
 					<a th:text="${libro.titulo}"></a>
-					<a th:href="@{/irAContenidoLibro(id=${libro.id})}" > Ver</a>
+					<a th:href="@{/irAContenidoLibro(id=${libro.id})}" id="linkTo" > Ver</a>
+					<a th:href="@{/irAModificarLibro(id=${libro.id})}" id="linkTo"> Modificar</a>
 				</p>
 			</div>
 

@@ -43,10 +43,12 @@
 			    </ol>
 			</nav>
 			
+			<h4>Resultados de la consulta</h4>
 			<div class="editoriales">
-				<p th:each="editorial : ${resultadoConsulta}">
+				<p th:each="editorial : ${resultadoConsulta}"> -
 					<a th:text="${editorial.nombre}"></a>
-					<a th:href="@{/irAContenidoEditorial(idEditorial=${editorial.idEditorial})}"> Ver</a>
+					<a th:href="@{/irAContenidoEditorial(idEditorial=${editorial.idEditorial})}" id="linkTo"> Ver</a>
+					<a th:href="@{/irAModificarEditorial(idEditorial=${editorial.idEditorial})}" id="linkTo"> Modificar</a>
 				</p>
 			</div>
 

@@ -199,11 +199,16 @@ h4{
 
 #linkTo{
 	color:#34495e;
+	margin-left:10px;
 }
 
 #buttonSubmit{
 	margin-left:60px;
 }
 #buttonSubmit2{
-	margin-left:85px;
+	margin-left:75px;
+}
+
+p{
+	margin-left:15px;
 }
