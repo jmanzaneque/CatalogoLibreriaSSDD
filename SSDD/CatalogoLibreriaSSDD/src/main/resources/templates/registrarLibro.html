@@ -44,7 +44,7 @@
 			      <li class="breadcrumb-item active" aria-current="page">Registrar Libro</li>
 			    </ol>
 			</nav>
-			<form method="post" action="/registroLibroCompletado">
+			<form id="formulario" method="post" action="/registroLibroCompletado">
 				<div class="form-group col-lg-5">
 					<label>Título</label>
 					<input type="text" class="form-control" placeholder="Título" name="titulo"/>
@@ -90,13 +90,38 @@
 				</div>
 				
 				<div class="col-md-3">
-						<input class="btn btn-outline-primary my-2 my-sm-0" type="submit" id="buttonSubmit3" value="Registrar"/>
+					<input class="btn btn-outline-primary my-2 my-sm-0" type="submit" id="buttonSubmit3" value="Registrar"/>
 				</div>
 			</form>
 		</div>			
 	</div>
 </div>
+	
+<script type="text/javascript">
+var form = document.getElementById("formulario");
 
+form.addEventListener("submit", function(event){
+  event.preventDefault();
+  var comodin = true,
+      elementos = this.elements,
+      total = elementos.length;
+  
+  for (var i = 0; i < total; i++){
+    if (!elementos[i].value.length){
+      alert ("Debes de ingresar el " + elementos[i].name);
+      elementos[i].focus();
+      comodin = false;
+      break;
+    }
+  }
+  
+  if (comodin){
+    this.submit();
+  }
+}, false);
+</script>
+			    
+			    
  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
