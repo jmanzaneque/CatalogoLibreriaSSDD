@@ -181,9 +181,15 @@ public class EditorialController {
 	
 	@PostConstruct
 	public void init() {
+		/*
 		repEditorial.save(new Editorial("Anaya",628015678,"anaya@anaya.es",45200,"B27897865"));
 		repEditorial.save(new Editorial("SM",628015655,"editorialSm@Sm.es",45200,"58282767X"));
 		repEditorial.save(new Editorial("Rubio",11112655,"rubioEditorial@rubio.es",45210,"A45333333"));
+		repEditorial.save(new Editorial("Ariel",916477665,"ariel@ariel.es",28900,"B27333865"));
+		repEditorial.save(new Editorial("Planeta",916423789,"planeta@planeta.es",39200,"Z27897111"));
+		repEditorial.save(new Editorial("Disney",902202122,"diseney@diseny.es",45232,"J12345678"));
+		repEditorial.save(new Editorial("Minotauro",628333678,"minotauro@minotauro.es",12345,"Z27897333"));
+		*/
 	}
 	
 

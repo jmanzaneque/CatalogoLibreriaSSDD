@@ -210,13 +210,43 @@ public class LibroController {
 	
 	@PostConstruct
 	public void init() {
+		Editorial anaya = new Editorial("Anaya",628015678,"anaya@anaya.es",45200,"B27897865");
+		repEditorial.save(anaya);
+		Editorial sm = new Editorial("SM",628015655,"editorialSm@Sm.es",45200,"58282767X");
+		repEditorial.save(sm);
 		Editorial plaza = new Editorial("Plaza",622754789,"plaza@plaza.es",45200,"B27896235");
 		repEditorial.save(plaza);
 		Editorial castro = new Editorial("Castro",62802348,"castroSm@castro.es",45210,"58283226A");
 		repEditorial.save(castro);
+		Editorial ariel = new Editorial("Ariel",916477665,"ariel@ariel.es",28900,"B27333865");
+		repEditorial.save(ariel);
+		Editorial planeta = new Editorial("Planeta",916423789,"planeta@planeta.es",39200,"Z27897111");
+		repEditorial.save(planeta);
+		Editorial disney = new Editorial("Disney",902202122,"diseney@diseny.es",45232,"J12345678");
+		repEditorial.save(disney);
+		Editorial minotauro = new Editorial("Minotauro",628333678,"minotauro@minotauro.es",12345,"Z27897333");
+		repEditorial.save(minotauro);
 		repLibro.save(new Libro("Paco León", "En busca del arca", "Aventura",122, 33, 2007, plaza));
 		repLibro.save(new Libro("Marco Galán", "Sueños rotos", "Aventura",155, 32, 2004, castro));
-
+		repLibro.save(new Libro("Pepe Ventura", "Mi casa encantada", "Terror",120, 15, 2014, planeta));
+		repLibro.save(new Libro("Pepe Ventura", "Aracnofobia", "Terror",155, 32, 2014, planeta));
+		repLibro.save(new Libro("Iñigo Cuesta", "La senda de la pasión", "Romantica",200, 39, 1999, ariel));
+		repLibro.save(new Libro("John Smith", "El libro de la Selva", "Infantil",202, 33, 1984, disney));
+		repLibro.save(new Libro("Mikel Dalas", "Viaje al mundo de chocolate", "Infantil",100, 22, 2002, disney));
+		repLibro.save(new Libro("Mercedes López", "Tiempos de guerra", "Bélica",400, 55, 2016, minotauro)); 
+		repLibro.save(new Libro("Blue Jeans", "La chica invisible", "Terror",430, 22, 2006, ariel)); 
+		repLibro.save(new Libro("Alvaro Vargas", "A comer se aprende", "Autoayuda",90, 11, 2000, plaza)); 
+		repLibro.save(new Libro("Maria Dueñas", "Tiempo entre costuras", "Contemporánea",310, 44, 2006, ariel)); 
+		repLibro.save(new Libro("Juan García", "Un tipo corriente", "Aventura",238, 23, 2012, minotauro)); 
+		repLibro.save(new Libro("Paula García", "London day", "Aventura",200, 15, 2017, disney)); 
+		repLibro.save(new Libro("Noelia León", "Payapeuta", "Autoayuda",230, 26, 2008,  castro)); 
+		repLibro.save(new Libro("Pablo Hidalgo", "Gol al tabaco", "Autoayuda",232, 16, 2013,  castro));
+		repLibro.save(new Libro("Francisco Sánchez", "El juego de Peter", "Aventura",132, 11, 2011,  plaza));
+		repLibro.save(new Libro("Joaquín González", "El niño del paso", "Terror",148, 26, 1977,  minotauro));
+		repLibro.save(new Libro("Leire Fernández", "El desamor", "Romantica",140, 19, 2012,  sm));
+		repLibro.save(new Libro("Pablo Pérez", "El juego de la noche", "Terror",148, 26, 1970,  sm));
+		repLibro.save(new Libro("Alfredo Torres", "El luchador", "Aventura",132, 21, 2011,  anaya));
+		repLibro.save(new Libro("Diego Alonso", "La guerra del desastre", "Bélicar",148, 26, 1977,  anaya));
 	}
 	
 
