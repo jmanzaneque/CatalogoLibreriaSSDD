@@ -48,7 +48,7 @@
 			<form id="formulario" method="post" action="/registroLibroCompletado">
 				<div class="form-group col-lg-5">
 					<label>Título</label>
-					<input type="text" class="form-control" placeholder="Título" name="titulo"/>
+					<input type="text" class="form-control" placeholder="Título" name="titulo" />
 				</div>	
 				
 				<div class="form-group col-lg-5">
@@ -98,12 +98,28 @@
 	</div>
 </div>
 	
-			   			    
+		   			    
  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-
+<script >
+var formulario = document.getElementById("formulario"),comodin = true;
+formulario.addEventListener("submit", function(event){
+	event.preventDefault();
+	var elementos = this.elements;
+	for (var i in elementos){
+	    if (!elementos[i].value.length){
+	        alert("Debe de completar el campo " + elementos[i].name);
+	        comodin = false;
+	        break;
+	    }
+	}
+	if (comodin){
+	    this.submit();
+	}
+	}, false);
+</script>	
 
 
 </body>
