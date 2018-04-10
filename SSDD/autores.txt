@@ -1,0 +1,30 @@
+Jorge Manzaneque Ruiz			03945022Q
+	- Registrar editorial
+	- Acceder a contenido editorial
+	- Consulta de editoriales por diferentes criterios
+	- Ordenar editoriales
+	- CSS Registrar editorial y registrar libro
+	- CSS Contenido editorial y contenido libro
+	- CSS Registro editorial completado y contenido libro completado 
+
+Steven Córdova Proaño			50373498W	
+	- Catálogo Libros (Visualización)
+	- Catálogo Editoriales (Visualización)
+	- Registrar Libro
+	- Consulta de libros por diferentes criterios	
+	- Ordenar libros
+	- Script que comprueba si todos los campos están completos en el formulario
+	- CSS Catálogo libros y catálogo editoriales
+	- CSS Inicio
+
+Mark Iglesias Szendefy			47582728Y
+	- Registrar Libro
+	- Modificar Libro
+	- Introducción de casos de prueba
+	- Acceder a contenido libro
+
+Daniel Molina Ballesteros		50251186G
+	- Modificar editorial
+	- Control parámetros entrada en formularios
+	- Ordenar libros
+	- Ordenar editoriales
