@@ -1,0 +1,27 @@
+<head>
+	<title>Práctica 2</title>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="practica2.js"></script>
+</head>
+<body>
+	<div>
+		<h2>Búsqueda de fotos</h2>
+	</div>
+	<div>
+		<form action="index_submit" method="get" id="formulario">
+			<label>User: </label>
+			<input type="text" id="user_id" /><br/>
+			<label>Min taken date: </label>
+			<input type="text" id="min_taken_date" /><br/>
+			<label>Max taken date: </label>
+			<input type="text" id="max_taken_date" /><br/>
+			<label>Min upload date: </label>
+			<input type="text" id="min_upload_date" /><br/>
+			<label>Max upload date: </label>
+			<input type="text" id="max_upload_date" /><br/>
+			<input type="submit" id="boton" value="Buscar"></input>
+		</form>
+	</div>
+
+	<div id="listaFotos"></div>
+</body>
