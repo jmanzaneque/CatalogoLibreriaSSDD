@@ -85,7 +85,6 @@ function mostrar(event) {
 
 function mostrar_fotos(info){
 	var i;
-
 	//Para cada foto devuelta en el JSON, una vez ha pasado los filtros de min_taken_date, max_taken_date, min_upload_date y max_upload date
 	for (i=0;i<info.photos.photo.length;i++) {
 	   var item = info.photos.photo[i];
@@ -93,6 +92,8 @@ function mostrar_fotos(info){
 	   //Creación url foto
 	   var url = 'https://farm' + item.farm + ".staticflickr.com/" + item.server
 		          + '/' + item.id + '_' + item.secret + '_m.jpg';
+	   var url2 = 'https://farm' + item.farm + ".staticflickr.com/" + item.server
+		          + '/' + item.id + '_' + item.secret + '.jpg';
 	   console.debug(url);
 	   var indice = i.toString();
 
@@ -114,8 +115,7 @@ function mostrar_fotos(info){
 
 	   if (pasaFiltroDescription && pasaFiltroTitle && pasaFiltroViews) { 	//Si pasa los tres filtros --> Añadir foto al resultado de la búsqueda
 	   		$("#listaFotos").append($("<div/>").attr('id', indice));
-	   		$("#"+indice).append($("<img/>").attr("src",url));
-	   
+	   		$("#"+indice).append($("<a/>").attr("href",url2).append($("<img/>").attr("src",url)));
 			$("#"+indice).append($("<p/>").html("user_id: " + user_id ));
 
 		   if ( ($("#min_taken_date").val() != "") || ($("#max_taken_date").val() != "") ) {	//Si se utiliza un criterio sobre datetaken
@@ -145,7 +145,9 @@ function mostrar_fotos(info){
 		   		$("#"+indice).append($("<p/>").append(", description: " + item.description._content));		//Incluimos la información sobre description
 		   }
 
+
 	   } //End if
+
 	   	   
     } //End for
 }
