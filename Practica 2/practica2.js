@@ -3,16 +3,8 @@ var user_id;
 
 $(function(){					//Importante esta función, cuando se carga la página es lo que se ejecuta
 	$("#formulario").submit(mostrar);
-	//$("#boton").click(mostrar);
 })
 
-/*
-	PASOS A REALIZAR:
-	- Crear formulario de entrada con los criterios
-	- Poner como id de cada input el nombre del atributo para la URL
-	- Hacer $("#formulario").serialize() para que lo convierta a pares clave=valor
-	- Añadir a la URL
-*/
 
 function mostrar(event) {
 
@@ -71,9 +63,9 @@ function mostrar(event) {
 	var views = Number($("#views").val());
 	console.log("views: " + views);
 
-	//Tratamiento de tags
-	var tags = $("#tags").val();
-	console.log("tags: " + tags);
+	//Tratamiento de title
+	var title = $("#title").val();
+	console.log("title: " + title);
 
 	//Tratamiento de description
 	var description = $("#description").val();
@@ -88,28 +80,32 @@ function mostrar(event) {
 	//Borra el resultado de la anterior consulta
 	$("#listaFotos").html("");
 
-	$.getJSON(url, mostrar_fotos)
+	$.getJSON(url, mostrar_fotos);
 }
 
 function mostrar_fotos(info){
 	var i;
+
+	//Para cada foto devuelta en el JSON, una vez ha pasado los filtros de min_taken_date, max_taken_date, min_upload_date y max_upload date
 	for (i=0;i<info.photos.photo.length;i++) {
 	   var item = info.photos.photo[i];
+
+	   //Creación url foto
 	   var url = 'https://farm' + item.farm + ".staticflickr.com/" + item.server
 		          + '/' + item.id + '_' + item.secret + '_m.jpg';
 	   console.debug(url);
 	   var indice = i.toString();
 
-	   //Control de parámetros views, description y tags 
+	   //Control de parámetros views, description y title 
 	   //(min_taken_date, max_taken_date, min_upload_date y max_upload date se han filtrado en la petición HTTP)
-	   var pasaFiltroViews = ($("#views").val() == "") ||  (($("#views").val() != "") && (item.views >= views));	//True si el campo views está vacío o si items.views es mayor al parámetro views.
+	   var pasaFiltroViews = ($("#views").val() == "") ||  (($("#views").val() != "") && (item.views >= views));	//True si el campo views está vacío o si item.views es mayor al parámetro views.
 	   
-	   var pasaFiltroTags = ($("#tags").val() == "") || (($("#tags").val() != "") && item.tags.contains($.trim($("#tags"))));
+	   var pasaFiltroTitle = ($("#title").val() == "") || (($("#title").val() != "") && item.title.includes($.trim($("#title"))));
 	   
 	   var pasaFiltroDescription = ($("#description").val() == "") || 
-	   										(($("#description").val() != "") && item.description._content.contains($.trim($("#description"))));
+	   										(($("#description").val() != "") && item.description._content.includes($.trim($("#description"))));
 
-	   if (pasaFiltroDescription && pasaFiltroTags && pasaFiltroViews) { 	//Si pasa los tres filtros --> Añadir foto al resultado de la búsqueda
+	   if (pasaFiltroDescription && pasaFiltroTitle && pasaFiltroViews) { 	//Si pasa los tres filtros --> Añadir foto al resultado de la búsqueda
 	   		$("#listaFotos").append($("<div/>").attr('id', indice));
 	   		$("#"+indice).append($("<img/>").attr("src",url));
 	   
@@ -119,7 +115,8 @@ function mostrar_fotos(info){
 		   		$("#"+indice).append($("<p/>").append(", taken_date: " + item.datetaken));		//Incluimos la información sobre datetaken
 		   }
 
-		   if ( ($("#min_upload_date").val() != "") || ($("#max_upload_date").val() != "") ) {	//Si se utiliza un criterio sobre dateupload CORREGIR DATE
+		   if ( ($("#min_upload_date").val() != "") || ($("#max_upload_date").val() != "") ) {	//Si se utiliza un criterio sobre dateupload
+		   		//CORREGIR DATE
 		   		var time = Number(item.dateupload);
 		   		console.log("Tiempo en segundos: " + time);
 		   		var uploaddate = new Date(time);
@@ -133,8 +130,8 @@ function mostrar_fotos(info){
 		   		$("#"+indice).append($("<p/>").append(", views: " + item.views));		//Incluimos la información sobre views
 		   }
 
-		   if ($("#tags").val() != "") {		//Si se ha aplicado un filtro views
-		   		$("#"+indice).append($("<p/>").append(", tags: " + item.tags));		//Incluimos la información sobre tags
+		   if ($("#title").val() != "") {		//Si se ha aplicado un filtro title
+		   		$("#"+indice).append($("<p/>").append(", title: " + item.title));		//Incluimos la información sobre title
 		   }
 
 		   if ($("#description").val() != "") {		//Si se ha aplicado un filtro description
@@ -146,7 +143,7 @@ function mostrar_fotos(info){
 	   
 
 	   
-    }
+    } //End for
 }
 
 /*
