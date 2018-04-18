@@ -98,12 +98,19 @@ function mostrar_fotos(info){
 
 	   //Control de parámetros views, description y title 
 	   //(min_taken_date, max_taken_date, min_upload_date y max_upload date se han filtrado en la petición HTTP)
-	   var pasaFiltroViews = ($("#views").val() == "") ||  (($("#views").val() != "") && (item.views >= views));	//True si el campo views está vacío o si item.views es mayor al parámetro views.
+	   //var views = Number($("#views").val());
+	   //var itemviews = Number(item.views);
+	   var containViews = $("#views").val() != "";
+	   var pasaFiltroViews = (!containViews) ||  (containViews && (item.views >= views));	//True si el campo views está vacío o si item.views es mayor al parámetro views.
 	   
-	   var pasaFiltroTitle = ($("#title").val() == "") || (($("#title").val() != "") && item.title.includes($.trim($("#title"))));
+	   var containTitle = $("#title").val() != "";
+	   var includesTitle = isExist(item.title, $("#title").val());
+	   var pasaFiltroTitle = (!containTitle) || (containTitle && includesTitle);
 	   
-	   var pasaFiltroDescription = ($("#description").val() == "") || 
-	   										(($("#description").val() != "") && item.description._content.includes($.trim($("#description"))));
+	   var containDescription = $("#description").val() != "";
+	   var includesDescription = isExist(item.description._content, $("#description").val());
+	   var pasaFiltroDescription = (!containDescription) || 
+	   										(containDescription && includesDescription);
 
 	   if (pasaFiltroDescription && pasaFiltroTitle && pasaFiltroViews) { 	//Si pasa los tres filtros --> Añadir foto al resultado de la búsqueda
 	   		$("#listaFotos").append($("<div/>").attr('id', indice));
@@ -126,30 +133,45 @@ function mostrar_fotos(info){
 		   		$("#"+indice).append($("<p/>").append(", upload_date: " + upload_dateString));		//Incluimos la información sobre dateupload
 		   }
 
-		   if ($("#views").val() != "") {		//Si se ha aplicado un filtro views
+		   if (containViews) {		//Si se ha aplicado un filtro views
 		   		$("#"+indice).append($("<p/>").append(", views: " + item.views));		//Incluimos la información sobre views
 		   }
 
-		   if ($("#title").val() != "") {		//Si se ha aplicado un filtro title
+		   if (containTitle) {		//Si se ha aplicado un filtro title
 		   		$("#"+indice).append($("<p/>").append(", title: " + item.title));		//Incluimos la información sobre title
 		   }
 
-		   if ($("#description").val() != "") {		//Si se ha aplicado un filtro description
+		   if (containDescription) {		//Si se ha aplicado un filtro description
 		   		$("#"+indice).append($("<p/>").append(", description: " + item.description._content));		//Incluimos la información sobre description
 		   }
 
 	   } //End if
-	   
-	   
-
-	   
+	   	   
     } //End for
 }
 
+function isExist(mainString, substring) {
+	if (mainString.indexOf(substring) != -1) {
+	    return true;
+	}
+	else {
+	    return false;
+	}
+}
 /*
  if($("#direccion").val() == ""){
         alert("El campo Dirección no puede estar vacío.");
         $("#direccion").focus();
         return false;
     }
+
+    function isExist(mainString, substring) {
+
+if (mainString.indexOf(substring) != -1) {
+    return true;
+}
+else {
+    return false;
+}
+}
  */
