@@ -1,27 +1,47 @@
 <head>
 	<title>Práctica 2</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+	<link rel="stylesheet" href="styles.css" type="text/css"/>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="practica2.js"></script>
 </head>
 <body>
-	<div>
-		<h2>Búsqueda de fotos</h2>
-	</div>
-	<div>
-		<form action="index_submit" method="get" id="formulario">
-			<label>User: </label>
-			<input type="text" id="user_id" /><br/>
-			<label>Min taken date: </label>
-			<input type="text" id="min_taken_date" /><br/>
-			<label>Max taken date: </label>
-			<input type="text" id="max_taken_date" /><br/>
-			<label>Min upload date: </label>
-			<input type="text" id="min_upload_date" /><br/>
-			<label>Max upload date: </label>
-			<input type="text" id="max_upload_date" /><br/>
-			<input type="submit" id="boton" value="Buscar"></input>
-		</form>
-	</div>
-
-	<div id="listaFotos"></div>
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"><h1>Búsqueda de fotos</h1></nav>
+	<main>
+		<div id="contenedorFormulario">
+			<form action="index_submit" method="get" id="formulario">
+				<label>User: </label>
+				<input type="text" id="user_id" /><br/>
+				<label>Min taken date: </label>
+				<input type="text" id="min_taken_date" /><br/>
+				<label>Max taken date: </label>
+				<input type="text" id="max_taken_date" /><br/>
+				<label>Min upload date: </label>
+				<input type="text" id="min_upload_date" /><br/>
+				<label>Max upload date: </label>
+				<input type="text" id="max_upload_date" /><br/>
+				<label>Tags: </label>
+				<input type="text" id="tags" /><br/>
+				<label>Views: </label>
+				<input type="text" id="views" /><br/>
+				<label>Description: </label>
+				<input type="text" id="description" /><br/>
+				<input type="submit" id="boton" value="Buscar"></input>
+			</form>
+		</div>
+		<div id = "contenedorResultado">
+			<div id="listaFotos"></div>
+			<p> Hola</p>
+		</div>
+		
+	</main>
+	<footer></footer>
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+	
+	
+	
 </body>
