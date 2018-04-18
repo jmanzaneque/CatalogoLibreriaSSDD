@@ -14,10 +14,11 @@ $(function(){					//Importante esta función, cuando se carga la página es lo q
 	- Añadir a la URL
 */
 
-function mostrar() {
+function mostrar(event) {
 
 	event.preventDefault();	//Para evitar que haga el uso por defecto de submit
 	
+	console.log("PARÁMETROS DE LA CONSULTA");
 	//Tratamiento de user_id (OBLIGATORIO)
 	user_id = $("#user_id").val();
 	console.log("user_id: " + user_id);
@@ -26,14 +27,15 @@ function mostrar() {
 		user_idURL = "&user_id=" + user_id;
 	}
 
+	//LAS FECHAS SE ESCRIBEN DE LA FORMA mm/dd/aaaa
+
 	//Tratamiento de min_taken_date
 	var min_taken_dateString = $("#min_taken_date").val();
 	var min_taken_date= encodeURI($("#min_taken_date").val());
 	console.log("min_taken_date:" + min_taken_date);
 	var min_taken_dateURL = "";
 	if ($("#min_taken_date").val() != "") {
-		min_taken_dateURL = "&min_taken_date=" + min_taken_date +
-			"&extras=" + encodeURI("tags,date_taken,date_upload,views");
+		min_taken_dateURL = "&min_taken_date=" + min_taken_date;
 
 	}
 
@@ -43,8 +45,7 @@ function mostrar() {
 	console.log("max_taken_date:" + max_taken_date);
 	var max_taken_dateURL = "";
 	if ($("#max_taken_date").val() != "") {
-		max_taken_dateURL = "&max_taken_date=" + max_taken_date +
-			"&extras=" + encodeURI("tags,date_taken,date_upload,views");
+		max_taken_dateURL = "&max_taken_date=" + max_taken_date;
 	}
 
 
@@ -54,8 +55,7 @@ function mostrar() {
 	console.log("min_upload_date:" + min_upload_date);
 	var min_upload_dateURL = "";
 	if ($("#min_upload_date").val() != "") {
-		min_upload_dateURL = "&min_upload_date=" + min_upload_date +
-			"&extras=" + encodeURI("tags,date_taken,date_upload,views");
+		min_upload_dateURL = "&min_upload_date=" + min_upload_date;
 	}
 
 	//Tratamiento de max_upload_date
@@ -64,15 +64,25 @@ function mostrar() {
 	console.log("max_upload_date:" + max_upload_date);
 	var max_upload_dateURL = "";
 	if ($("#max_upload_date").val() != "") {
-		max_upload_dateURL = "&max_upload_date=" + max_upload_date +
-			"&extras=" + encodeURI("tags,date_taken,date_upload,views");
+		max_upload_dateURL = "&max_upload_date=" + max_upload_date;
 	}
 
-	//Incluir extras al final ????
+	//Tratamiento de views
+	var views = Number($("#views").val());
+	console.log("views: " + views);
+
+	//Tratamiento de tags
+	var tags = $("#tags").val();
+	console.log("tags: " + tags);
+
+	//Tratamiento de description
+	var description = $("#description").val();
+	console.log("description:" + description);
+
 
 	//Creación de la url
 	var url = 'https://api.flickr.com/services/rest/?&method=flickr.people.getPhotos&api_key=' + api_key + user_idURL + min_taken_dateURL + 
-		max_taken_dateURL + min_upload_dateURL + max_upload_dateURL + '&format=json&nojsoncallback=1';
+		max_taken_dateURL + min_upload_dateURL + max_upload_dateURL + "&extras=" + encodeURI("description,tags,date_taken,date_upload,views") + '&format=json&nojsoncallback=1';
 	console.log(url);
 
 	//Borra el resultado de la anterior consulta
@@ -90,30 +100,55 @@ function mostrar_fotos(info){
 	   console.debug(url);
 	   var indice = i.toString();
 
-	   $("#listaFotos").append($("<div/>").attr('id', indice));
-	   $("#"+indice).append($("<img/>").attr("src",url));
-	   $("#"+indice).append($("<p/>").html("user_id: " + user_id ));
+	   //Control de parámetros views, description y tags 
+	   //(min_taken_date, max_taken_date, min_upload_date y max_upload date se han filtrado en la petición HTTP)
+	   var pasaFiltroViews = ($("#views").val() == "") ||  (($("#views").val() != "") && (item.views >= views));	//True si el campo views está vacío o si items.views es mayor al parámetro views.
+	   
+	   var pasaFiltroTags = ($("#tags").val() == "") || (($("#tags").val() != "") && item.tags.contains($.trim($("#tags"))));
+	   
+	   var pasaFiltroDescription = ($("#description").val() == "") || 
+	   										(($("#description").val() != "") && item.description._content.contains($.trim($("#description"))));
 
-	   if ( ($("#min_taken_date").val() != "") || ($("#max_taken_date").val() != "") ) {	//Si se utiliza un criterio sobre datetaken
-	   		$("#"+indice).append($("<p/>").append(", taken_date: " + item.datetaken));		//Incluimos la información sobre datetaken
-	   }
+	   if (pasaFiltroDescription && pasaFiltroTags && pasaFiltroViews) { 	//Si pasa los tres filtros --> Añadir foto al resultado de la búsqueda
+	   		$("#listaFotos").append($("<div/>").attr('id', indice));
+	   		$("#"+indice).append($("<img/>").attr("src",url));
+	   
+			$("#"+indice).append($("<p/>").html("user_id: " + user_id ));
+
+		   if ( ($("#min_taken_date").val() != "") || ($("#max_taken_date").val() != "") ) {	//Si se utiliza un criterio sobre datetaken
+		   		$("#"+indice).append($("<p/>").append(", taken_date: " + item.datetaken));		//Incluimos la información sobre datetaken
+		   }
+
+		   if ( ($("#min_upload_date").val() != "") || ($("#max_upload_date").val() != "") ) {	//Si se utiliza un criterio sobre dateupload CORREGIR DATE
+		   		var time = Number(item.dateupload);
+		   		console.log("Tiempo en segundos: " + time);
+		   		var uploaddate = new Date(time);
+
+		   		var upload_dateString = 
+		   		console.log("Fecha de upload: " + upload_dateString );
+		   		$("#"+indice).append($("<p/>").append(", upload_date: " + upload_dateString));		//Incluimos la información sobre dateupload
+		   }
+
+		   if ($("#views").val() != "") {		//Si se ha aplicado un filtro views
+		   		$("#"+indice).append($("<p/>").append(", views: " + item.views));		//Incluimos la información sobre views
+		   }
+
+		   if ($("#tags").val() != "") {		//Si se ha aplicado un filtro views
+		   		$("#"+indice).append($("<p/>").append(", tags: " + item.tags));		//Incluimos la información sobre tags
+		   }
+
+		   if ($("#description").val() != "") {		//Si se ha aplicado un filtro description
+		   		$("#"+indice).append($("<p/>").append(", description: " + item.description._content));		//Incluimos la información sobre description
+		   }
+
+	   } //End if
+	   
+	   
 
 	   
     }
 }
-/*	PUEDE SER INNECESARIO SI AÑADIMOS EXTRAS
-    //Se hace después, ya que las peticiones son asíncronas --> Lo pone todo con el valor de índice 4
-    for (i=0;i<info.photos.photo.length;i++) {
-    	item = info.photos.photo[i];
-	   	indice = i.toString();
-	   	//Petición para obtener los datos de la foto
-    	$.getJSON("https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=" + api_key + 
-	   	"&photo_id=" + item.id + '&format=json&nojsoncallback=1', indice, function (data) {
-	   		$("#"+indice).append($("<p/>").html("user_id: " + user_id + ", taken_date: " + data.photo.dates.taken));
-	   	})
-    }
-}
-*/
+
 /*
  if($("#direccion").val() == ""){
         alert("El campo Dirección no puede estar vacío.");
