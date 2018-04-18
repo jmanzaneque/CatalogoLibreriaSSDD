@@ -14,7 +14,7 @@ $(function(){					//Importante esta función, cuando se carga la página es lo q
 	- Añadir a la URL
 */
 
-function mostrar() {
+function mostrar(event) {
 
 	event.preventDefault();	//Para evitar que haga el uso por defecto de submit
 	
