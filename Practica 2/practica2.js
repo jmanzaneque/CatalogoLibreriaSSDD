@@ -3,7 +3,6 @@ var user_id;
 
 $(function(){					//Importante esta función, cuando se carga la página es lo que se ejecuta
 	$("#formulario").submit(mostrar);
-	$("#formulario").submit(zoomFotos);
 })
 
 /* calendar */
@@ -138,11 +137,13 @@ function mostrar_fotos(info){
 
 	   if (pasaFiltroDescription && pasaFiltroTitle && pasaFiltroViews) { 	//Si pasa los tres filtros --> Añadir foto al resultado de la búsqueda
 	   		$("#listaFotos").append($("<div/>").attr('id', indice));
-	   		$("#"+indice).append($("<a/>").append($("<img/>").attr("src",url)));
-			$("#"+indice).append($("<p/>").html("user_id: " + user_id ));
+	   		$("#"+indice).append($("<div/>").attr('id',"imagen"+indice));
+	   		$("#"+"imagen"+indice).append($("<img/>").attr("src",url));
+	   		$("#"+indice).append($("<div/>").attr('id',"textoImagen"+indice));
+			$("#"+"textoImagen"+indice).append($("<p/>").html("Nombre de Usuario: " + user_id ));
 
 		   if ( ($("#min_taken_date").val() != "") || ($("#max_taken_date").val() != "") ) {	//Si se utiliza un criterio sobre datetaken
-		   		$("#"+indice).append($("<p/>").append(", taken_date: " + item.datetaken));		//Incluimos la información sobre datetaken
+		   		$("#"+"textoImagen"+indice).append($("<p/>").append("taken_date: " + item.datetaken));		//Incluimos la información sobre datetaken
 		   }
 
 		   if ( ($("#min_upload_date").val() != "") || ($("#max_upload_date").val() != "") ) {	//Si se utiliza un criterio sobre dateupload
@@ -153,19 +154,19 @@ function mostrar_fotos(info){
 
 		   		var upload_dateString = 
 		   		console.log("Fecha de upload: " + upload_dateString );
-		   		$("#"+indice).append($("<p/>").append(", upload_date: " + upload_dateString));		//Incluimos la información sobre dateupload
+		   		$("#"+"textoImagen"+indice).append($("<p/>").append("upload_date: " + upload_dateString));		//Incluimos la información sobre dateupload
 		   }
 
 		   if (containViews) {		//Si se ha aplicado un filtro views
-		   		$("#"+indice).append($("<p/>").append(", views: " + item.views));		//Incluimos la información sobre views
+		   		$("#"+"textoImagen"+indice).append($("<p/>").append("views: " + item.views));		//Incluimos la información sobre views
 		   }
 
 		   if (containTitle) {		//Si se ha aplicado un filtro title
-		   		$("#"+indice).append($("<p/>").append(", title: " + item.title));		//Incluimos la información sobre title
+		   		$("#"+"textoImagen"+indice).append($("<p/>").append("title: " + item.title));		//Incluimos la información sobre title
 		   }
 
 		   if (containDescription) {		//Si se ha aplicado un filtro description
-		   		$("#"+indice).append($("<p/>").append(", description: " + item.description._content));		//Incluimos la información sobre description
+		   		$("#"+"textoImagen"+indice).append($("<p/>").append("description: " + item.description._content));		//Incluimos la información sobre description
 		   }
 
 
