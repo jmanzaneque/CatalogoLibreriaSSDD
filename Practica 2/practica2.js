@@ -29,21 +29,25 @@ $.datepicker.setDefaults($.datepicker.regional['es']);
 	
 $( function() {
 	$ ("#min_taken_date").datepicker({
+		inline: true,
 		changeMonth:true, 
 		changeYear: true});
 });
 $( function() {
 	$ ("#max_taken_date").datepicker({
+		inline: true,
 		changeMonth:true, 
 		changeYear: true});
 });
 $( function() {
 	$ ("#min_upload_date").datepicker({
+		inline: true,
 		changeMonth:true, 
 		changeYear: true});
 });
 $( function() {
 	$ ("#max_upload_date").datepicker({
+		inline: true,
 		changeMonth:true, 
 		changeYear: true});
 });
