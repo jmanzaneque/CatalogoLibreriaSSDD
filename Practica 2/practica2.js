@@ -198,7 +198,6 @@ function isExist(mainString, substring) {
 	    return false;
 	}
 }
-<<<<<<< HEAD
 
 /*
  if($("#direccion").val() == ""){
@@ -217,5 +216,3 @@ else {
 }
 }
  */
-=======
->>>>>>> 2d54137ec446b7e496c0254304b89e2e1d25a85f
