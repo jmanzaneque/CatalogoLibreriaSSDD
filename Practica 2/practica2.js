@@ -28,21 +28,6 @@ $( function() {
 		changeYear: true});
 });
 
-function zoomFotos(event){
-	event.preventDefault();	//Para evitar que haga el uso por defecto de submit
-	$("#listaFotos").each(function(){
-		$($(this.id)).elevateZoom({
-  			cursor: "crosshair",  // Para que se muestre una cruz al apoyar el cursor sobre la imagen
- 			zoomWindowFadeIn: 500, // El tiempo que tarda en mostrar el zoom al apoyar el cursor sobre la imagen
- 			zoomWindowFadeOut: 750 // El tiempo que tarda en desaparecer el zoom al sacar el cursor sobre la imagen
-		}
-		);
-	})
-	;
-
-
-
-}
 
 function mostrar(event) {
 
