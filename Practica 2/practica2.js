@@ -5,6 +5,27 @@ $(function(){					//Importante esta función, cuando se carga la página es lo q
 	$("#formulario").submit(mostrar);
 })
 
+/* calendar */
+$( function() {
+	$ ("#min_taken_date").datepicker({
+		changeMonth:true, 
+		changeYear: true});
+});
+$( function() {
+	$ ("#max_taken_date").datepicker({
+		changeMonth:true, 
+		changeYear: true});
+});
+$( function() {
+	$ ("#min_upload_date").datepicker({
+		changeMonth:true, 
+		changeYear: true});
+});
+$( function() {
+	$ ("#max_upload_date").datepicker({
+		changeMonth:true, 
+		changeYear: true});
+});
 
 function mostrar(event) {
 
@@ -21,7 +42,9 @@ function mostrar(event) {
 
 	//LAS FECHAS SE ESCRIBEN DE LA FORMA mm/dd/aaaa
 
+
 	//Tratamiento de min_taken_date
+
 	var min_taken_dateString = $("#min_taken_date").val();
 	var min_taken_date= encodeURI($("#min_taken_date").val());
 	console.log("min_taken_date:" + min_taken_date);
@@ -160,6 +183,7 @@ function isExist(mainString, substring) {
 	    return false;
 	}
 }
+
 /*
  if($("#direccion").val() == ""){
         alert("El campo Dirección no puede estar vacío.");
