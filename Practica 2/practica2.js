@@ -6,6 +6,27 @@ $(function(){					//Importante esta función, cuando se carga la página es lo q
 	$("#formulario").submit(zoomFotos);
 })
 
+/* calendar */
+$( function() {
+	$ ("#min_taken_date").datepicker({
+		changeMonth:true, 
+		changeYear: true});
+});
+$( function() {
+	$ ("#max_taken_date").datepicker({
+		changeMonth:true, 
+		changeYear: true});
+});
+$( function() {
+	$ ("#min_upload_date").datepicker({
+		changeMonth:true, 
+		changeYear: true});
+});
+$( function() {
+	$ ("#max_upload_date").datepicker({
+		changeMonth:true, 
+		changeYear: true});
+});
 
 function zoomFotos(event){
 	event.preventDefault();	//Para evitar que haga el uso por defecto de submit
@@ -38,7 +59,9 @@ function mostrar(event) {
 
 	//LAS FECHAS SE ESCRIBEN DE LA FORMA mm/dd/aaaa
 
+
 	//Tratamiento de min_taken_date
+
 	var min_taken_dateString = $("#min_taken_date").val();
 	var min_taken_date= encodeURI($("#min_taken_date").val());
 	console.log("min_taken_date:" + min_taken_date);
@@ -175,3 +198,24 @@ function isExist(mainString, substring) {
 	    return false;
 	}
 }
+<<<<<<< HEAD
+
+/*
+ if($("#direccion").val() == ""){
+        alert("El campo Dirección no puede estar vacío.");
+        $("#direccion").focus();
+        return false;
+    }
+
+    function isExist(mainString, substring) {
+
+if (mainString.indexOf(substring) != -1) {
+    return true;
+}
+else {
+    return false;
+}
+}
+ */
+=======
+>>>>>>> 2d54137ec446b7e496c0254304b89e2e1d25a85f
