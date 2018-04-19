@@ -94,13 +94,12 @@ function mostrar_fotos(info){
 		          + '/' + item.id + '_' + item.secret + '_m.jpg';
 	   var url2 = 'https://farm' + item.farm + ".staticflickr.com/" + item.server
 		          + '/' + item.id + '_' + item.secret + '.jpg';
-	   console.debug(url);
+	   console.debug(url);			//Saca la url por consola
 	   var indice = i.toString();
 
 	   //Control de parámetros views, description y title 
 	   //(min_taken_date, max_taken_date, min_upload_date y max_upload date se han filtrado en la petición HTTP)
-	   //var views = Number($("#views").val());
-	   //var itemviews = Number(item.views);
+	   var views = Number($("#views").val());
 	   var containViews = $("#views").val() != "";
 	   var pasaFiltroViews = (!containViews) ||  (containViews && (item.views >= views));	//True si el campo views está vacío o si item.views es mayor al parámetro views.
 	   
@@ -160,20 +159,3 @@ function isExist(mainString, substring) {
 	    return false;
 	}
 }
-/*
- if($("#direccion").val() == ""){
-        alert("El campo Dirección no puede estar vacío.");
-        $("#direccion").focus();
-        return false;
-    }
-
-    function isExist(mainString, substring) {
-
-if (mainString.indexOf(substring) != -1) {
-    return true;
-}
-else {
-    return false;
-}
-}
- */
