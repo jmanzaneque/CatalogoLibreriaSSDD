@@ -3,8 +3,25 @@ var user_id;
 
 $(function(){					//Importante esta función, cuando se carga la página es lo que se ejecuta
 	$("#formulario").submit(mostrar);
+	$("#formulario").submit(zoomFotos);
 })
 
+
+function zoomFotos(event){
+	event.preventDefault();	//Para evitar que haga el uso por defecto de submit
+	$("#listaFotos").each(function(){
+		$($(this.id)).elevateZoom({
+  			cursor: "crosshair",  // Para que se muestre una cruz al apoyar el cursor sobre la imagen
+ 			zoomWindowFadeIn: 500, // El tiempo que tarda en mostrar el zoom al apoyar el cursor sobre la imagen
+ 			zoomWindowFadeOut: 750 // El tiempo que tarda en desaparecer el zoom al sacar el cursor sobre la imagen
+		}
+		);
+	})
+	;
+
+
+
+}
 
 function mostrar(event) {
 
@@ -109,12 +126,11 @@ function mostrar_fotos(info){
 	   
 	   var containDescription = $("#description").val() != "";
 	   var includesDescription = isExist(item.description._content, $("#description").val());
-	   var pasaFiltroDescription = (!containDescription) || 
-	   										(containDescription && includesDescription);
+	   var pasaFiltroDescription = (!containDescription) || (containDescription && includesDescription);
 
 	   if (pasaFiltroDescription && pasaFiltroTitle && pasaFiltroViews) { 	//Si pasa los tres filtros --> Añadir foto al resultado de la búsqueda
 	   		$("#listaFotos").append($("<div/>").attr('id', indice));
-	   		$("#"+indice).append($("<a/>").attr("href",url2).append($("<img/>").attr("src",url)));
+	   		$("#"+indice).append($("<a/>").append($("<img/>").attr("src",url)));
 			$("#"+indice).append($("<p/>").html("user_id: " + user_id ));
 
 		   if ( ($("#min_taken_date").val() != "") || ($("#max_taken_date").val() != "") ) {	//Si se utiliza un criterio sobre datetaken
