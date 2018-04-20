@@ -14,9 +14,10 @@
 }
 
 #contenedorResultado{
-    float: right;
-    margin-right: 10%;
+    float: left;
+    margin-right: 8%;
     margin-top: 3%;
+    max-width: 50%
     
 }
 
@@ -187,4 +188,18 @@ ui-datepicker-calendar .ui-state-default {
 	border: 1px solid #55838f;
 	position: relative;
 	margin: 0px;
+}
+.estiloFotos{
+    float: left;
+    margin-right: 4%;
+    margin-left: 4%;
+}
+
+img {
+
+    vertical-align: middle;
+    border-style: none;
+    /*width: 10rem;
+    height: 15%;
+    */
 }

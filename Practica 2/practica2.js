@@ -160,10 +160,10 @@ function mostrar_fotos(info){
 	   var pasaFiltroDescription = (!containDescription) || (containDescription && includesDescription);
 
 	   if (pasaFiltroDescription && pasaFiltroTitle && pasaFiltroViews) { 	//Si pasa los tres filtros --> Añadir foto al resultado de la búsqueda
-	   		$("#listaFotos").append($("<div/>").attr('id', indice));
-	   		$("#"+indice).append($("<div/>").attr('id',"imagen"+indice));
+	   		$("#listaFotos").append($("<div/>").attr('id', 'foto'+indice).attr('class','estiloFotos'));
+	   		$("#"+'foto'+indice).append($("<div/>").attr('id',"imagen"+indice));
 	   		$("#"+"imagen"+indice).append($("<img/>").attr("src",url));
-	   		$("#"+indice).append($("<div/>").attr('id',"textoImagen"+indice));
+	   		$("#"+'foto'+indice).append($("<div/>").attr('id',"textoImagen"+indice));
 			$("#"+"textoImagen"+indice).append($("<p/>").html("Nombre de Usuario: " + user_id ));
 
 		   if ( ($("#min_taken_date").val() != "") || ($("#max_taken_date").val() != "") ) {	//Si se utiliza un criterio sobre datetaken
