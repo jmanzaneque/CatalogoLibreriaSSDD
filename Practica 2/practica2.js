@@ -6,7 +6,7 @@ $(function(){					//Importante esta función, cuando se carga la página es lo q
 })
 
 /* calendar */
-/* config*/
+
 $.datepicker.regional['es'] = {
 		 closeText: 'Cerrar',
 		 prevText: '< Ant',
@@ -50,6 +50,7 @@ $( function() {
 		changeMonth:true, 
 		changeYear: true});
 });
+
 
 
 function mostrar(event) {
@@ -133,6 +134,7 @@ function mostrar(event) {
 
 function mostrar_fotos(info){
 	var i;
+	$("#galeryPhotos").append($("<ul/>").attr('id',"listGalery").attr('class',"gallery clearfix"));
 	//Para cada foto devuelta en el JSON, una vez ha pasado los filtros de min_taken_date, max_taken_date, min_upload_date y max_upload date
 	for (i=0;i<info.photos.photo.length;i++) {
 	   var item = info.photos.photo[i];
@@ -163,6 +165,9 @@ function mostrar_fotos(info){
 	   		$("#listaFotos").append($("<div/>").attr('id', indice));
 	   		$("#"+indice).append($("<div/>").attr('id',"imagen"+indice));
 	   		$("#"+"imagen"+indice).append($("<img/>").attr("src",url));
+
+	   		$("#listGalery").append($("<li/>").append($("<a/>").attr('href',url2).attr('rel',"prettyPhoto[gallery1]").addClass('ejemplo').append($("<img/>").attr('src',url).attr('width',"60").attr('height',"60"))));
+	   		
 	   		$("#"+indice).append($("<div/>").attr('id',"textoImagen"+indice));
 			$("#"+"textoImagen"+indice).append($("<p/>").html("Nombre de Usuario: " + user_id ));
 
