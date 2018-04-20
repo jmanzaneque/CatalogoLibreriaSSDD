@@ -55,6 +55,7 @@ $( function() {
 
 function mostrar(event) {
 
+	$('#contenidoSinResultado').fadeOut(600);
 	event.preventDefault();	//Para evitar que haga el uso por defecto de submit
 	
 	console.log("PARÁMETROS DE LA CONSULTA");
