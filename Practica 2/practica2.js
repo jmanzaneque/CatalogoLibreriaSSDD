@@ -4,7 +4,8 @@ var user_id;
 $(function(){					//Importante esta función, cuando se carga la página es lo que se ejecuta
 	$("#formulario").submit(mostrar);
 
-})
+
+});
 
 /* calendar */
 /* config*/
@@ -202,11 +203,15 @@ function mostrar_fotos(info){
 	   	   
     } //End for
 
-    $('.zoom').hover(function() {
-        $(this).addClass('transition');
-    }, function() {
-        $(this).removeClass('transition');
-    });
+
+	$('img').click(function(){
+		$(this).removeClass('zoom');
+		$(this).addClass('transition');
+	});
+	$('img').dblclick(function(){
+		$(this).removeClass('transition');
+		$(this).addClass('zoom');
+	});
 
 }
 

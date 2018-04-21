@@ -18,7 +18,7 @@
 #contenedorResultado {
     float: left;
     margin-top: 3%;
-    max-width: 60%;
+    max-width: 63%;
     overflow: scroll;
     height: 100%;
 }
@@ -226,16 +226,10 @@ img {
 img.zoom {
     width: 150px;
     height: 150px;
-    -webkit-transition: all .2s ease-in-out;
-    -moz-transition: all .2s ease-in-out;
-    -o-transition: all .2s ease-in-out;
-    -ms-transition: all .2s ease-in-out;
 }
  
 .transition {
-    -webkit-transform: scale(1.8); 
-    -moz-transform: scale(1.8);
-    -o-transform: scale(1.8);
-    transform: scale(1.8);
+    width: 880px;
+    height: 580px;
 }
 
