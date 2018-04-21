@@ -3,6 +3,7 @@ var user_id;
 
 $(function(){					//Importante esta función, cuando se carga la página es lo que se ejecuta
 	$("#formulario").submit(mostrar);
+
 })
 
 /* calendar */
@@ -164,7 +165,7 @@ function mostrar_fotos(info){
 	   if (pasaFiltroDescription && pasaFiltroTitle && pasaFiltroViews) { 	//Si pasa los tres filtros --> Añadir foto al resultado de la búsqueda
 	   		$("#listaFotos").append($("<div/>").attr('id', 'foto'+indice).attr('class','estiloFotos'));
 	   		$("#"+'foto'+indice).append($("<div/>").attr('id',"imagen"+indice));
-	   		$("#"+"imagen"+indice).append($("<img/>").attr("src",url));
+	   		$("#"+"imagen"+indice).append($("<img/>").attr("src",url).attr('class','zoom'));
 	   		$("#"+'foto'+indice).append($("<div/>").attr('id',"textoImagen"+indice));
 			$("#"+"textoImagen"+indice).append($("<p/>").html("Nombre de Usuario: " + user_id ));
 
@@ -200,6 +201,13 @@ function mostrar_fotos(info){
 
 	   	   
     } //End for
+
+    $('.zoom').hover(function() {
+        $(this).addClass('transition');
+    }, function() {
+        $(this).removeClass('transition');
+    });
+
 }
 
 function isExist(mainString, substring) {
