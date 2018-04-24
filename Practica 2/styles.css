@@ -224,12 +224,13 @@ img {
 }
 
 img.zoom {
-    width: 150px;
-    height: 150px;
+    height: : 150px;
+    width: auto;
 }
  
 .transition {
     width: 880px;
-    height: 580px;
+    height: auto;
+
 }
 

@@ -143,7 +143,7 @@ function mostrar_fotos(info){
 
 	   //Creación url foto
 	   var url = 'https://farm' + item.farm + ".staticflickr.com/" + item.server
-		          + '/' + item.id + '_' + item.secret + '_m.jpg';
+		          + '/' + item.id + '_' + item.secret + '_b.jpg';
 	   var url2 = 'https://farm' + item.farm + ".staticflickr.com/" + item.server
 		          + '/' + item.id + '_' + item.secret + '.jpg';
 	   console.debug(url);			//Saca la url por consola
