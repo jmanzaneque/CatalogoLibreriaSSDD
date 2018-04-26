@@ -200,6 +200,8 @@ ui-datepicker-calendar .ui-state-default {
 	position: relative;
 	margin: 0px;
 }
+
+/* Mostrar fotos */
 .estiloFotos{
     float: left;
     margin-right: 2%;

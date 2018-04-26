@@ -171,7 +171,9 @@ function mostrar_fotos(info){
 			$("#"+"textoImagen"+indice).append($("<p/>").html("Nombre de Usuario: " + user_id ));
 
 		   if ( ($("#min_taken_date").val() != "") || ($("#max_taken_date").val() != "") ) {	//Si se utiliza un criterio sobre datetaken
-		   		$("#"+"textoImagen"+indice).append($("<p/>").append("taken_date: " + item.datetaken));		//Incluimos la información sobre datetaken
+		   		//$("#"+"textoImagen"+indice).append($("<p/>").append("taken_date: " + item.datetaken));		//Incluimos la información sobre datetaken
+		   		$("#"+"textoImagen"+indice).append($("<p/>").append("Tomada el: " + item.datetaken));		//Nuevo forma de mostrar
+
 		   }
 
 		   if ( ($("#min_upload_date").val() != "") || ($("#max_upload_date").val() != "") ) {	//Si se utiliza un criterio sobre dateupload
@@ -182,7 +184,7 @@ function mostrar_fotos(info){
 
 		   		var upload_dateString = 
 		   		console.log("Fecha de upload: " + upload_dateString );
-		   		$("#"+"textoImagen"+indice).append($("<p/>").append("upload_date: " + upload_dateString));		//Incluimos la información sobre dateupload
+		   		$("#"+"textoImagen"+indice).append($("<p/>").append("upload_date: " + uploaddate));		//Incluimos la información sobre dateupload
 		   }
 
 		   if (containViews) {		//Si se ha aplicado un filtro views
