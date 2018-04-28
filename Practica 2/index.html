@@ -4,22 +4,22 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
 	<link rel="stylesheet" href="styles.css" type="text/css"/>
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="practica2.js"></script>
+	<script src="credencialesFlickr.js"></script>
 </head>
 <body>
-	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"><h1>Búsqueda de fotos</h1></nav>
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"><h1>Buscador de fotos de Flickr</h1></nav>
 	<main>
 		<div id="contenedorFormulario">
-			<div><p>HOLA. Utilice los criterios para buscar fotos en flickr</p></div>
-			<form action="index_submit" method="get" id="formulario">
-				<div class="form-group">
-					<label class=" col-form-label">User: </label>
-					<input class="form-control form-control-lg" type="text" id="user_id" />
-				</div>
+			<h3>Criterios de búsqueda</h3>
+			<p class="info"><small>Usuario: burrard-lucas</small></p>
+			<p class="info"><small>Las fechas utilizan el formato: mm/dd/aaaa</small></p>
+			<p class="info"><small>Click para ampliar. Doble click para reducir imagen.</small></p>
 
+			<form action="index_submit" method="get" id="formulario">
 				<div class="form-group">
 					<label class=" col-form-label">Min taken date: </label>
 					<p><input class="form-control form-control-lg" type="text"  id="min_taken_date" /></p>

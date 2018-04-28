@@ -1,9 +1,6 @@
-var api_key= "8266454cc4bfb6161d3a5f3a27e8f1ee";
-var user_id;
 
 $(function(){					//Importante esta función, cuando se carga la página es lo que se ejecuta
 	$("#formulario").submit(mostrar);
-
 
 });
 
@@ -58,22 +55,17 @@ $( function() {
 function mostrar(event) {
 
 	$('#contenidoSinResultado').fadeOut(600);
+	$('#contenedorResultado').show();
 	event.preventDefault();	//Para evitar que haga el uso por defecto de submit
-	
 	console.log("PARÁMETROS DE LA CONSULTA");
 	//Tratamiento de user_id (OBLIGATORIO)
-	user_id = $("#user_id").val();
 	console.log("user_id: " + user_id);
 	var user_idURL = "";
-	if ($("#user_id").val() != "") {
-		user_idURL = "&user_id=" + user_id;
-	}
+	user_idURL = "&user_id=" + user_id;
 
 	//LAS FECHAS SE ESCRIBEN DE LA FORMA mm/dd/aaaa
 
-
 	//Tratamiento de min_taken_date
-
 	var min_taken_dateString = $("#min_taken_date").val();
 	var min_taken_date= encodeURI($("#min_taken_date").val());
 	console.log("min_taken_date:" + min_taken_date);
@@ -165,40 +157,32 @@ function mostrar_fotos(info){
 
 	   if (pasaFiltroDescription && pasaFiltroTitle && pasaFiltroViews) { 	//Si pasa los tres filtros --> Añadir foto al resultado de la búsqueda
 	   		$("#listaFotos").append($("<div/>").attr('id', 'foto'+indice).attr('class','estiloFotos'));
-	   		$("#"+'foto'+indice).append($("<div/>").attr('id',"imagen"+indice));
+	   		$("#"+'foto'+indice).append($("<div/>").attr('id',"imagen"+indice).attr('class', 'imagen'));
 	   		$("#"+"imagen"+indice).append($("<img/>").attr("src",url).attr('class','zoom'));
 	   		$("#"+'foto'+indice).append($("<div/>").attr('id',"textoImagen"+indice));
 			$("#"+"textoImagen"+indice).append($("<p/>").html("Nombre de Usuario: " + user_id ));
 
 		   if ( ($("#min_taken_date").val() != "") || ($("#max_taken_date").val() != "") ) {	//Si se utiliza un criterio sobre datetaken
-		   		//$("#"+"textoImagen"+indice).append($("<p/>").append("taken_date: " + item.datetaken));		//Incluimos la información sobre datetaken
-		   		$("#"+"textoImagen"+indice).append($("<p/>").append("Tomada el: " + item.datetaken));		//Nuevo forma de mostrar
+		   		$("#"+"textoImagen"+indice).append($("<p/>").append("Taken date: " + item.datetaken));		//Nuevo forma de mostrar
 
 		   }
 
 		   if ( ($("#min_upload_date").val() != "") || ($("#max_upload_date").val() != "") ) {	//Si se utiliza un criterio sobre dateupload
-		   		//CORREGIR DATE
 		   		var time = Number(item.dateupload);
-		   		console.log("Tiempo en segundos: " + time);
-		   		var uploaddate = new Date(time);
-
-		   		var upload_dateString = 
-		   		console.log("Fecha de upload: " + upload_dateString );
-		   		$("#"+"textoImagen"+indice).append($("<p/>").append("upload_date: " + uploaddate));		//Incluimos la información sobre dateupload
+		   		$("#"+"textoImagen"+indice).append($("<p/>").append("Upload date: " + time));		//Incluimos la información sobre dateupload
 		   }
 
 		   if (containViews) {		//Si se ha aplicado un filtro views
-		   		$("#"+"textoImagen"+indice).append($("<p/>").append("views: " + item.views));		//Incluimos la información sobre views
+		   		$("#"+"textoImagen"+indice).append($("<p/>").append("Views: " + item.views));		//Incluimos la información sobre views
 		   }
 
 		   if (containTitle) {		//Si se ha aplicado un filtro title
-		   		$("#"+"textoImagen"+indice).append($("<p/>").append("title: " + item.title));		//Incluimos la información sobre title
+		   		$("#"+"textoImagen"+indice).append($("<p/>").append("Title: " + item.title));		//Incluimos la información sobre title
 		   }
 
 		   if (containDescription) {		//Si se ha aplicado un filtro description
-		   		$("#"+"textoImagen"+indice).append($("<p/>").append("description: " + item.description._content));		//Incluimos la información sobre description
+		   		$("#"+"textoImagen"+indice).append($("<p/>").append("Description: " + item.description._content));		//Incluimos la información sobre description
 		   }
-
 
 	   } //End if
 
@@ -206,13 +190,18 @@ function mostrar_fotos(info){
     } //End for
 
 
-	$('img').click(function(){
-		$(this).removeClass('zoom');
-		$(this).addClass('transition');
+	$('.estiloFotos').click(function(){
+		$(this).removeClass('estiloFotos');
+		$(this).addClass('estiloFotosAumentado');
+		$(this).find('.imagen').removeClass('imagen').addClass('imagenAumentada');
+		$(this).find('img').removeClass('zoom').addClass('transition');
 	});
-	$('img').dblclick(function(){
-		$(this).removeClass('transition');
-		$(this).addClass('zoom');
+
+	$('.estiloFotos').dblclick(function(){
+		$(this).removeClass('estiloFotosAumentado');
+		$(this).addClass('estiloFotos');
+		$(this).find('img').removeClass('transition').addClass('zoom');
+		$(this).find('.imagenAumentada').removeClass('imagenAumentada').addClass('imagen');
 	});
 
 }
@@ -226,20 +215,3 @@ function isExist(mainString, substring) {
 	}
 }
 
-/*
- if($("#direccion").val() == ""){
-        alert("El campo Dirección no puede estar vacío.");
-        $("#direccion").focus();
-        return false;
-    }
-
-    function isExist(mainString, substring) {
-
-if (mainString.indexOf(substring) != -1) {
-    return true;
-}
-else {
-    return false;
-}
-}
- */
