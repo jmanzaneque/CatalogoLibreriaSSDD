@@ -1,0 +1,17 @@
+Jorge Manzaneque Ruiz			03945022Q
+	- Consulta según min taken date
+	- Consulta según views
+	- CSS
+
+Steven Córdova Proaño			50373498W	
+	- Consulta según max taken date
+	- Consulta según title
+	- CSS
+
+Mark Iglesias Szendefy			47582728Y
+	- Consulta según min upload date
+	- Consulta según max upload date
+
+Daniel Molina Ballesteros		50251186G
+	- Consulta según description
+	- Calendario para seleccionar la fecha
